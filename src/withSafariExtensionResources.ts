@@ -76,6 +76,46 @@ export const withSafariExtensionResources: ConfigPlugin = (config) => {
         path.join(__dirname, "Resources", "images", "icon-48.png"),
         path.join(extensionResourcesOut, "images/icon-48.png")
       );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "icon-64.png"),
+        path.join(extensionResourcesOut, "images/icon-64.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "icon-128.png"),
+        path.join(extensionResourcesOut, "images/icon-128.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "icon-256.png"),
+        path.join(extensionResourcesOut, "images/icon-256.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "icon-512.png"),
+        path.join(extensionResourcesOut, "images/icon-512.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "toolbar-icon-16.png"),
+        path.join(extensionResourcesOut, "images/toolbar-icon-16.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "toolbar-icon-19.png"),
+        path.join(extensionResourcesOut, "images/toolbar-icon-19.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "toolbar-icon-32.png"),
+        path.join(extensionResourcesOut, "images/toolbar-icon-32.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "toolbar-icon-38.png"),
+        path.join(extensionResourcesOut, "images/toolbar-icon-38.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "toolbar-icon-48.png"),
+        path.join(extensionResourcesOut, "images/toolbar-icon-48.png")
+      );
+      await fs.promises.copyFile(
+        path.join(__dirname, "Resources", "images", "toolbar-icon-72.png"),
+        path.join(extensionResourcesOut, "images/toolbar-icon-72.png")
+      );
 
       return config;
     },
