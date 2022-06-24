@@ -1,0 +1,52 @@
+{
+  "name": "react-native-safari-extension",
+  "version": "0.0.1",
+  "description": "Config plugin to add a Safari Extension to a React Native iOS app",
+  "main": "build/withSafariExtension.js",
+  "types": "build/withSafariExtension.d.ts",
+  "files": [
+    "build",
+    "app.plugin.js"
+  ],
+  "scripts": {
+    "build": "copyfiles Resources/* build  && copyfiles -u 1 \"Resources/**/*\" build/Resources  && copyfiles SafariWebExtensionHandler/* build && expo-module build",
+    "clean": "expo-module clean",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew-levy/react-native-safari-extension.git"
+  },
+  "author": {
+    "name": "Andrew Levy",
+    "url": "https://github.com/andrew-levy"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrew-levy/react-native-safari-extension/issues"
+  },
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "homepage": "https://github.com/andrew-levy/react-native-safari-extensionp#readme",
+  "keywords": [
+    "react-native",
+    "expo",
+    "app-clip",
+    "expo-config-plugin"
+  ],
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^17.0.42",
+    "copyfiles": "^2.4.1",
+    "expo-module-scripts": "^2.0.0"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@expo/config-plugins": "^4.1.5",
+    "xcode": "^3.0.1"
+  }
+}
