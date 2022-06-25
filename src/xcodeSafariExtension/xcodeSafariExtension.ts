@@ -1,7 +1,6 @@
 import { XcodeProject } from "@expo/config-plugins";
 
 import addBuildPhases from "./addBuildPhases";
-import addPbxGroup from "./addPbxGroup";
 import addProductFile from "./addProductFile";
 import addTargetDependency from "./addTargetDependency";
 import addToPbxNativeTargetSection from "./addToPbxNativeTargetSection";
@@ -19,7 +18,6 @@ export async function addSafariExtensionXcodeTarget(
     platformProjectRoot,
     currentProjectVersion,
     marketingVersion,
-    entryPoint,
   }: {
     appName: string;
     extensionName: string;
@@ -29,7 +27,6 @@ export async function addSafariExtensionXcodeTarget(
     platformProjectRoot: string;
     currentProjectVersion: string;
     marketingVersion: string;
-    entryPoint: string;
   }
 ) {
   const targetUuid = proj.generateUuid();
@@ -71,7 +68,6 @@ export async function addSafariExtensionXcodeTarget(
     groupName,
     productFile,
     targetUuid,
-    entryPoint,
     extensionRootPath,
   });
 

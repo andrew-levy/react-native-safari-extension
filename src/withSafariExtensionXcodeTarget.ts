@@ -33,7 +33,6 @@ export const withSafariExtensionXcodeTarget: ConfigPlugin = (config) => {
       platformProjectRoot,
       currentProjectVersion,
       marketingVersion,
-      entryPoint: "",
     });
 
     return config;

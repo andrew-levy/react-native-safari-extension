@@ -4,7 +4,13 @@ import * as path from "path";
 
 import { getExtensionFolder } from "./withSafariExtension";
 
-export const withSafariExtensionResources: ConfigPlugin = (config) => {
+type SafariExtensionConfigOptions = {
+  dir?: string;
+};
+
+export const withSafariExtensionResources: ConfigPlugin<
+  SafariExtensionConfigOptions
+> = (config, options) => {
   return withDangerousMod(config, [
     "ios",
     async (config) => {
@@ -15,109 +21,39 @@ export const withSafariExtensionResources: ConfigPlugin = (config) => {
         config.modRequest.platformProjectRoot,
         extensionFolderName
       );
-
+      const projectRootPath = path.join(extensionRootPath, "../..");
       const extensionResourcesOut = path.join(extensionRootPath, "Resources");
+      const dest = options?.dir ?? path.join(projectRootPath, "Extension");
+      const destAlreadyExists = fs.existsSync(dest);
 
-      // Automate this
-      const backgroundJS = path.join(__dirname, "Resources/background.js");
-      const contentJS = path.join(__dirname, "Resources/content.js");
-      const popupJS = path.join(__dirname, "Resources/popup.js");
-      const manifestJSON = path.join(__dirname, "Resources/manifest.json");
-      const popupCSS = path.join(__dirname, "Resources/popup.css");
-      const popupHTML = path.join(__dirname, "Resources/popup.html");
-      const messagesJSON = path.join(
-        __dirname,
-        "Resources",
-        "_locales",
-        "en",
-        "messages.json"
-      );
+      if (!destAlreadyExists) {
+        await copyFolderRecursive(path.join(__dirname, "Resources"), dest);
+      }
 
-      await fs.promises.mkdir(extensionResourcesOut, { recursive: true });
-      await fs.promises.mkdir(
-        path.join(extensionResourcesOut, "_locales", "en"),
-        {
-          recursive: true,
-        }
-      );
-      await fs.promises.mkdir(path.join(extensionResourcesOut, "images"), {
-        recursive: true,
-      });
-
-      await fs.promises.copyFile(
-        backgroundJS,
-        path.join(extensionResourcesOut, "background.js")
-      );
-      await fs.promises.copyFile(
-        contentJS,
-        path.join(extensionResourcesOut, "content.js")
-      );
-      await fs.promises.copyFile(
-        popupJS,
-        path.join(extensionResourcesOut, "popup.js")
-      );
-      await fs.promises.copyFile(
-        manifestJSON,
-        path.join(extensionResourcesOut, "manifest.json")
-      );
-      await fs.promises.copyFile(
-        popupCSS,
-        path.join(extensionResourcesOut, "popup.css")
-      );
-      await fs.promises.copyFile(
-        popupHTML,
-        path.join(extensionResourcesOut, "popup.html")
-      );
-      await fs.promises.copyFile(
-        messagesJSON,
-        path.join(extensionResourcesOut, "_locales/en/messages.json")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "icon-48.png"),
-        path.join(extensionResourcesOut, "images/icon-48.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "icon-64.png"),
-        path.join(extensionResourcesOut, "images/icon-64.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "icon-128.png"),
-        path.join(extensionResourcesOut, "images/icon-128.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "icon-256.png"),
-        path.join(extensionResourcesOut, "images/icon-256.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "icon-512.png"),
-        path.join(extensionResourcesOut, "images/icon-512.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "toolbar-icon-16.png"),
-        path.join(extensionResourcesOut, "images/toolbar-icon-16.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "toolbar-icon-19.png"),
-        path.join(extensionResourcesOut, "images/toolbar-icon-19.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "toolbar-icon-32.png"),
-        path.join(extensionResourcesOut, "images/toolbar-icon-32.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "toolbar-icon-38.png"),
-        path.join(extensionResourcesOut, "images/toolbar-icon-38.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "toolbar-icon-48.png"),
-        path.join(extensionResourcesOut, "images/toolbar-icon-48.png")
-      );
-      await fs.promises.copyFile(
-        path.join(__dirname, "Resources", "images", "toolbar-icon-72.png"),
-        path.join(extensionResourcesOut, "images/toolbar-icon-72.png")
+      // Copy either the default or the specified directory to `ios/{extensionName}/Resources/`.
+      await copyFolderRecursive(
+        options?.dir
+          ? path.join(projectRootPath, options.dir)
+          : path.join(__dirname, "Resources"),
+        extensionResourcesOut
       );
 
       return config;
     },
   ]);
 };
+
+async function copyFolderRecursive(src: string, dest: string) {
+  await fs.promises.mkdir(dest, { recursive: true });
+  const files = await fs.promises.readdir(src);
+  for (const file of files) {
+    const srcFile = path.join(src, file);
+    const destFile = path.join(dest, file);
+    const stats = await fs.promises.stat(srcFile);
+    if (stats.isFile()) {
+      await fs.promises.copyFile(srcFile, destFile);
+    } else if (stats.isDirectory()) {
+      await copyFolderRecursive(srcFile, destFile);
+    }
+  }
+}

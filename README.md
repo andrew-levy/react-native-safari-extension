@@ -2,9 +2,11 @@
 
 Expo Config Plugin that generates a Safari Extension for iOS apps.
 
-> **Warning** This plugin is a work in progress and hasn’t been adequately tested in the wild. I made the repository public to gather feedback and ask for help. Don’t use this plugin in production just yet!
+> **Warning** This plugin is a work in progress so there may be some bugs. Please feel free to contribute by reporting any issues or opening a PR.
 
 ## Installation
+
+Coming soo to an npm registry near you...
 
 ```console
 yarn add react-native-safari-extension
@@ -12,7 +14,11 @@ yarn add react-native-safari-extension
 
 ## Configuring the plugin
 
-Once you have installed the package, you can configure the plugin in your `app.json`. To customize your extension, you'll need to provide a `manifest` option, which should be a path to json file that conforms to [mdn's browser extension manifest.json](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json#example) specification. Here's an example:
+Once you have installed the package, you can configure the plugin in your `app.json`.
+
+The plugin takes in an option `dir` that specifies where the extension-related files should be output in your project. This directory will contain files responsible for customizing the extension's appearance and behavior.
+
+Here's an example `app.json`:
 
 ```json
 {
@@ -24,81 +30,49 @@ Once you have installed the package, you can configure the plugin in your `app.j
     "ios": {
       "bundleIdentifier": "com.example.myapp"
     },
-    "plugins": [
-      "react-native-safari-extension",
-      { "manifest": "./src/myExtension/manifest.json" }
-    ]
+    "plugins": [["react-native-safari-extension", { "dir": "src/extension" }]]
   }
 }
 ```
 
-In `manifest.json`, you can specify basic metadata about your extension such as the name and version, and can also specify aspects of your extension's functionality (such as background scripts, content scripts, and browser actions).
+> **Note** If the `dir` option is not provided, the plugin will fallback to a default to creating an `Extension/` folder in your project's root directory.
 
-> **Note** If the `manifest` option is not provided, the plugin will fallback to a default `manifest.json`.
+## Generating your extension
 
-## Customizing the extension
+To generate the extension, run `expo prebuild -p ios`. This will generate the extension files in your project and take care of all the necesarry confiurations so that it just works.
 
-To customize your extension, you can provide `html`, `js`, `css`, and other asset files in your `manifest.json`. You can put these anywhere in your project. Here's an example assuming the following file structure:
-
-Assuming the file structure of your project is:
+For example, if you specificed the `dir` option as `src/extension`, the plugin will generate the following files:
 
 ```
-MyAppWithExtension/
+MyCoolApp/
 └─── src/
     ├─── app/
     └─── extension/
+        ├── _locale/
         ├── images/
         ├── manifest.json
         ├── background.js
         ├── content.js
         ├── popup.js
-        └── styles.css
+        ├── popup.css
+        └── popup.html
 ```
 
-Your `manifest.json might` look something like this:
+To see the extension in action, you'll need to:
 
-```json
-{
-  "name": "My Extension",
-  "version": "1.0.0",
-  // Use the background key to include one or more background scripts, and optionally a background page in your extension. Background scripts are the place to put code that needs to maintain long-term state, or perform long-term operations, independently of the lifetime of any particular web pages or browser windows. Background scripts are loaded as soon as the extension is loaded and stay loaded until the extension is disabled or uninstalled, unless persistent is specified as false. You can use any of the WebExtension APIs in the script, as long as you have requested the necessary permissions.
-  "background": {
-    "scripts": ["background.js"]
-  },
-  // Instructs the browser to load content scripts into web pages whose URL matches a given pattern.
-  "content_scripts": [
-    {
-      "matches": ["https://*/*"],
-      "js": ["content.js"]
-    }
-  ],
-  //A browser action is a button that your extension adds to the browser's toolbar. The button has an icon, and may optionally have a popup whose content is specified using HTML, CSS, and JavaScript.
-  "browser_action": {
-    // Tooltip for the button, displayed when the user moves their mouse over it. If the button is added to the browser's menu panel, this is also shown under the app icon.
-    "default_title": "My Extension",
-    // Use this to specify one or more icons for the browser action. The icon is shown in the browser toolbar by default.
-    "default_icon": {
-      "16": "images/icon-16.png",
-      "32": "images/icon-32.png",
-      "64": "images/icon-64.png"
-    }
-  },
-  // The icons key specifies icons for your extension. Those icons will be used to represent the extension in components such as the Add-ons Manager.
-  "icons": {
-    "48": "images/icon-48.png",
-    "96": "images/icon-96.png",
-    "128": "images/icon-128.png",
-    "256": "images/icon-256.png",
-    "512": "images/icon-512.png"
-  }
-}
-```
-
-## Generating the extension
-
-1. Run `expo run:ios`. This will generate the extension and build/run your app.
+1. Run `expo run:ios`
 2. Once the app has successfully launched, open the Safari app and navigate to any webpage. Press the <span style="font-size:12px">A</span><span style="font-size:16px">A</span> button in the address bar. This will open a context menu.
 3. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Mange Extensions.
+
+> **Note** You can also manage your extensions from the Settings app: _Settings > Safari > Extensions_
+
+## Customizing your extension
+
+To customize your extension, you can edit the generated `html`, `js`, `css`, and other asset files.
+
+You'll notice there is a `manifest.json` as well. The `manifest.json` file should conform to the [mdn browser extension manifest](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json#example) specification, and is the only file that every extension must contain. Using `manifest.json`, you can specify basic metadata about your extension such as the name and version, and can also specify aspects of your extension's functionality (such as background scripts, content scripts, icons, and browser actions).
+
+Once you make changes to your extension, you can run your app with `expo run:ios` so that your changes will be reflected in the new build.
 
 ## Acknowledgements
 
