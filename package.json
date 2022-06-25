@@ -28,14 +28,11 @@
   "bugs": {
     "url": "https://github.com/andrew-levy/react-native-safari-extension/issues"
   },
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
-  "homepage": "https://github.com/andrew-levy/react-native-safari-extensionp#readme",
+  "homepage": "https://github.com/andrew-levy/react-native-safari-extension#readme",
   "keywords": [
     "react-native",
     "expo",
-    "app-clip",
+    "safari-extension",
     "expo-config-plugin"
   ],
   "devDependencies": {
