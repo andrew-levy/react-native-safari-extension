@@ -9,13 +9,11 @@ export default function addBuildPhases(
     groupName,
     productFile,
     targetUuid,
-    entryPoint,
     extensionRootPath,
   }: {
     groupName: string;
     productFile: PBXFile;
     targetUuid: string;
-    entryPoint: string;
     extensionRootPath: string;
   }
 ) {
