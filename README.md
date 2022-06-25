@@ -35,11 +35,11 @@ Here's an example `app.json`:
 }
 ```
 
-> **Note** If the `dir` option is not provided, the plugin will fallback to a default to creating an `Extension/` folder in your project's root directory.
+> **Note** If the `dir` option is not provided, the plugin will fallback to creating an `Extension/` folder in your project's root directory.
 
 ## Generating your extension
 
-To generate the extension, run `expo prebuild -p ios`. This will generate the extension files in your project and take care of all the necesarry confiurations so that it just works.
+To generate the extension, run `expo prebuild -p ios`. This will generate the extension files in your project and take care of all the necesarry configurations so that it Just Works&trade;.
 
 For example, if you specificed the `dir` option as `src/extension`, the plugin will generate the following files:
 
@@ -48,7 +48,7 @@ MyCoolApp/
 └─── src/
     ├─── app/
     └─── extension/
-        ├── _locale/
+        ├── _locales/
         ├── images/
         ├── manifest.json
         ├── background.js
