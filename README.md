@@ -1,6 +1,8 @@
 # react-native-safari-extension
 
-Expo Config Plugin that generates a Safari Extension for iOS apps.
+Expo config plugin that generates a Safari Extension for iOS apps.
+
+Not sure what Safari Extensions are? Check out [Apple's Safari Extension documentation](https://developer.apple.com/safari/extensions/) to learn more.
 
 > **Warning** This plugin is a work in progress so there may be some bugs. Please feel free to contribute by reporting any issues or opening a PR.
 
