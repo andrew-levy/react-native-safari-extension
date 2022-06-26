@@ -70,7 +70,7 @@ To customize your extension, you can edit the generated `html`, `js`, `css`, and
 
 You'll notice there is a `manifest.json` as well. The `manifest.json` file should conform to the [mdn browser extension manifest](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json#example) specification, and is the only file that every extension must contain. Using `manifest.json`, you can specify basic metadata about your extension such as the name and version, and can also specify aspects of your extension's functionality (such as background scripts, content scripts, icons, and browser actions).
 
-Once you make changes to your extension, re-run `expo prebuild -p ios`, and then run your application again to see the reflexted changes.
+Once you make changes to your extension, re-run `expo prebuild -p ios`, and then run your application again to view the changes.
 
 ## Acknowledgements
 

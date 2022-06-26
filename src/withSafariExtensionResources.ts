@@ -24,7 +24,7 @@ export const withSafariExtensionResources: ConfigPlugin<
       const projectRootPath = path.join(extensionRootPath, "../..");
       const extensionResourcesOut = path.join(extensionRootPath, "Resources");
       const projectFilesDest =
-        options?.dir ?? path.join(projectRootPath, `${extensionFolderName}`);
+        options?.dir ?? path.join(projectRootPath, extensionFolderName);
       const destAlreadyExists = fs.existsSync(projectFilesDest);
 
       if (!destAlreadyExists) {
@@ -47,7 +47,7 @@ export const withSafariExtensionResources: ConfigPlugin<
       await copyFolderRecursive(
         options?.dir
           ? path.join(projectRootPath, options.dir)
-          : path.join(__dirname, "Resources"),
+          : path.join(projectRootPath, extensionFolderName),
         extensionResourcesOut
       );
 
