@@ -23,11 +23,24 @@ export const withSafariExtensionResources: ConfigPlugin<
       );
       const projectRootPath = path.join(extensionRootPath, "../..");
       const extensionResourcesOut = path.join(extensionRootPath, "Resources");
-      const dest = options?.dir ?? path.join(projectRootPath, "Extension");
-      const destAlreadyExists = fs.existsSync(dest);
+      const projectFilesDest =
+        options?.dir ?? path.join(projectRootPath, `${extensionFolderName}`);
+      const destAlreadyExists = fs.existsSync(projectFilesDest);
 
       if (!destAlreadyExists) {
-        await copyFolderRecursive(path.join(__dirname, "Resources"), dest);
+        await copyFolderRecursive(
+          path.join(__dirname, "Resources"),
+          projectFilesDest
+        );
+        const manifestContent = await fs.promises.readFile(
+          path.join(projectFilesDest, "manifest.json")
+        );
+        const manifestJSON = JSON.parse(manifestContent.toString());
+        manifestJSON.name = extensionFolderName;
+        await fs.promises.writeFile(
+          path.join(projectFilesDest, "manifest.json"),
+          JSON.stringify(manifestJSON, null, 2)
+        );
       }
 
       // Copy either the default or the specified directory to `ios/{extensionName}/Resources/`.

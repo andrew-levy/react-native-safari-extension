@@ -29,6 +29,7 @@ export async function addSafariExtensionXcodeTarget(
     marketingVersion: string;
   }
 ) {
+  if (proj.getFirstProject().firstProject.targets?.length > 1) return true;
   const targetUuid = proj.generateUuid();
   const groupName = "Embed Safari Extensions";
 

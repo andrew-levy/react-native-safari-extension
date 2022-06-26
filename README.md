@@ -6,8 +6,6 @@ Expo Config Plugin that generates a Safari Extension for iOS apps.
 
 ## Installation
 
-Coming soo to an npm registry near you...
-
 ```console
 yarn add react-native-safari-extension
 ```
@@ -16,15 +14,15 @@ yarn add react-native-safari-extension
 
 Once you have installed the package, you can configure the plugin in your `app.json`.
 
-The plugin takes in an option `dir` that specifies where the extension-related files should be output in your project. This directory will contain files responsible for customizing the extension's appearance and behavior.
+The plugin takes in a `dir` option which specifies where the extension-related files should be output in your project. This directory will contain files responsible for customizing the extension's appearance and behavior.
 
 Here's an example `app.json`:
 
 ```json
 {
   "expo": {
-    "name": "app-with-extension",
-    "slug": "app-with-extension",
+    "name": "exampleApp",
+    "slug": "exampleApp",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
     "ios": {
