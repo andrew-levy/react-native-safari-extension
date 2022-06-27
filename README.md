@@ -39,7 +39,7 @@ Here's an example `app.json`:
 
 ## Generating your extension
 
-To generate the extension, run `expo prebuild -p ios`. This will generate the extension files in your project and take care of all the necesarry configurations so that it Just Works&trade;.
+To generate the extension, run `expo prebuild -p ios`. This will generate the extension files in your project and take care of all the necessary configurations.
 
 For example, if you specificed the `dir` option as `src/extension`, the plugin will generate the following files:
 
@@ -73,6 +73,14 @@ To customize your extension, you can edit the generated `html`, `js`, `css`, and
 You'll notice there is a `manifest.json` as well. The `manifest.json` file should conform to the [mdn browser extension manifest](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json#example) specification, and is the only file that every extension must contain. Using `manifest.json`, you can specify basic metadata about your extension such as the name and version, and can also specify aspects of your extension's functionality (such as background scripts, content scripts, icons, and browser actions).
 
 Once you make changes to your extension, re-run `expo prebuild -p ios`, and then run your application again to view the changes.
+
+## How it works
+
+If you wanted to set up a Safari Extension manually, you would need to go into XCode, add a new target, configure the extension, and build and run your project. From there, all of your work for customizing the extension is within the `ios` folder.
+
+Though these steps aren't too difficult, it forces you to think of your app and extension as two separate, unrelated projects living in two different places. And if you needed to delete your `ios` folder for some reason, you would have to remember to copy those files and redo the steps to create the extension again.
+
+_Enter config plugins!_ Instead, this plugin allows you to write your extension code in the same place as your app, making it feel like you are never leaving JS land. When you run the prebuild command, all of the XCode configurations will be set up properly and your extension files will be copied over to the `ios` folder.
 
 ## Acknowledgements
 
