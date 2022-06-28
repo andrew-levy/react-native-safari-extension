@@ -1,6 +1,6 @@
 import { XcodeProject } from "@expo/config-plugins";
 
-import { quoted } from "./util";
+import { quoted } from "../utils";
 
 export default function (
   proj: XcodeProject,

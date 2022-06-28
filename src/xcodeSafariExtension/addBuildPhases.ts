@@ -1,7 +1,7 @@
 import { XcodeProject } from "@expo/config-plugins";
 import path from "path";
 
-import { PBXFile, quoted } from "./util";
+import { PBXFile, quoted } from "../utils";
 
 export default function addBuildPhases(
   proj: XcodeProject,
@@ -35,9 +35,24 @@ export default function addBuildPhases(
   //   `Added PBXShellScriptBuildPhase ${startPackagerShellScriptBuildPhaseUuid}`
   // );
 
+  const { uuid: generateManifestScriptBuildPhaseUuid } = proj.addBuildPhase(
+    [],
+    "PBXShellScriptBuildPhase",
+    "Generate manifest.json",
+    targetUuid,
+    {
+      shellPath: "/bin/sh",
+      shellScript: "node ../web-extension/manifest.js",
+    },
+    buildPath
+  );
+  console.log(
+    `Added PBXShellScriptBuildPhase ${generateManifestScriptBuildPhaseUuid}`
+  );
+
   // Sources build phase
   const { uuid: sourcesBuildPhaseUuid } = proj.addBuildPhase(
-    [path.join(extensionRootPath, "SafariWebExtensionHandler.m")],
+    [path.join(extensionRootPath, "SafariWebExtensionHandler.swift")],
     "PBXSourcesBuildPhase",
     groupName,
     targetUuid,
@@ -70,16 +85,7 @@ export default function addBuildPhases(
 
   // Resources build phase
   const { uuid: resourcesBuildPhaseUuid } = proj.addBuildPhase(
-    [
-      path.join(extensionRootPath, "Resources", "manifest.json"),
-      path.join(extensionRootPath, "Resources", "content.js"),
-      path.join(extensionRootPath, "Resources", "background.js"),
-      path.join(extensionRootPath, "Resources", "popup.js"),
-      path.join(extensionRootPath, "Resources", "popup.css"),
-      path.join(extensionRootPath, "Resources", "popup.html"),
-      path.join(extensionRootPath, "Resources", "images"),
-      path.join(extensionRootPath, "Resources", "_locales"),
-    ],
+    ["locales", "manifest.json", "public"],
     "PBXResourcesBuildPhase",
     groupName,
     targetUuid,

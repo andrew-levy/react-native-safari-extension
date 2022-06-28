@@ -22,15 +22,3 @@ const withSafariExtension: ConfigPlugin<SafariExtensionConfigOptions> = (
 };
 
 export default withSafariExtension;
-
-export function getExtensionName(projectName: string) {
-  return `${projectName} Extension`;
-}
-
-export function getExtensionFolder(projectName: string) {
-  return `${projectName}Extension`;
-}
-
-export function getExtensionBundleIdentifier(bundleIdentifier: string) {
-  return `${bundleIdentifier}.Extension`;
-}

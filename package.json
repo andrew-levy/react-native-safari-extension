@@ -9,7 +9,7 @@
     "app.plugin.js"
   ],
   "scripts": {
-    "copy-files": "copyfiles Resources/* build  && copyfiles -u 1 \"Resources/**/*\" build/Resources  && copyfiles SafariWebExtensionHandler/* build",
+    "copy-files": "copyfiles web-extension/* build  && copyfiles -u 1 \"web-extension/**/*\" build/web-extension  && copyfiles SafariWebExtensionHandler.swift build",
     "build": "npm run copy-files && expo-module build",
     "clean": "expo-module clean",
     "expo-module": "expo-module"

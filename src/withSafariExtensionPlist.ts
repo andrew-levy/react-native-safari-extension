@@ -7,7 +7,7 @@ import plist from "@expo/plist";
 import * as fs from "fs";
 import * as path from "path";
 
-import { getExtensionFolder } from "./withSafariExtension";
+import { getExtensionFolder } from "./utils";
 
 export const withSafariExtensionPlist: ConfigPlugin = (config) => {
   return withDangerousMod(config, [

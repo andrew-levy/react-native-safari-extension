@@ -10,51 +10,11 @@ export default function addPbxGroup(
     platformProjectRoot,
   }: { appName: string; extensionFolder: string; platformProjectRoot: string }
 ) {
-  // Safari Extension folder
-  const extensionPath = path.join(platformProjectRoot, extensionFolder);
-
-  // Copy Expo.plist
-  const supportingPath = path.join(extensionPath, "Supporting");
-  const expoPlistSource = path.join(
-    platformProjectRoot,
-    appName,
-    "Supporting",
-    "Expo.plist"
-  );
-  fs.mkdirSync(supportingPath);
-  copyFileSync(expoPlistSource, supportingPath);
-
-  // Copy SplashScreen.storyboard
-  const splashScreenStoryboardSource = path.join(
-    platformProjectRoot,
-    appName,
-    "SplashScreen.storyboard"
-  );
-  copyFileSync(splashScreenStoryboardSource, extensionPath);
-
-  // Copy Images.xcassets
-  const imagesXcassetsSource = path.join(
-    platformProjectRoot,
-    appName,
-    "Images.xcassets"
-  );
-
-  copyFolderRecursiveSync(imagesXcassetsSource, extensionPath);
-
   // Add PBX group
   const { uuid: pbxGroupUuid } = proj.addPbxGroup(
-    [
-      // "AppDelegate.h",
-      // "AppDelegate.mm",
-      // "main.m",
-      // "Info.plist",
-      // "Images.xcassets",
-      // "SplashScreen.storyboard",
-      // "Supporting/Expo.plist",
-      // `${extensionFolder}.entitlements`,
-    ],
-    extensionFolder,
-    extensionFolder
+    ["public", "locales", "manifest.json"],
+    "web-extension",
+    path.join(platformProjectRoot, "..", "web-extension")
   );
   console.log(`Added PBXGroup ${pbxGroupUuid}`);
 
