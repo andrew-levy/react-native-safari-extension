@@ -35,24 +35,24 @@ export default function addBuildPhases(
   //   `Added PBXShellScriptBuildPhase ${startPackagerShellScriptBuildPhaseUuid}`
   // );
 
-  const { uuid: generateManifestScriptBuildPhaseUuid } = proj.addBuildPhase(
-    [],
-    "PBXShellScriptBuildPhase",
-    "Generate manifest.json",
-    targetUuid,
-    {
-      shellPath: "/bin/sh",
-      shellScript: "node ../web-extension/manifest.js",
-    },
-    buildPath
-  );
-  console.log(
-    `Added PBXShellScriptBuildPhase ${generateManifestScriptBuildPhaseUuid}`
-  );
+  // const { uuid: generateManifestScriptBuildPhaseUuid } = proj.addBuildPhase(
+  //   [],
+  //   "PBXShellScriptBuildPhase",
+  //   "Generate manifest.json",
+  //   targetUuid,
+  //   {
+  //     shellPath: "/bin/sh",
+  //     shellScript: "node ../web-extension/manifest.js",
+  //   },
+  //   buildPath
+  // );
+  // console.log(
+  //   `Added PBXShellScriptBuildPhase ${generateManifestScriptBuildPhaseUuid}`
+  // );
 
   // Sources build phase
   const { uuid: sourcesBuildPhaseUuid } = proj.addBuildPhase(
-    [path.join(extensionRootPath, "SafariWebExtensionHandler.swift")],
+    [path.join(extensionRootPath, "SafariWebExtensionHandler.m")],
     "PBXSourcesBuildPhase",
     groupName,
     targetUuid,
@@ -85,7 +85,7 @@ export default function addBuildPhases(
 
   // Resources build phase
   const { uuid: resourcesBuildPhaseUuid } = proj.addBuildPhase(
-    ["_locales", "manifest.json", "public"],
+    ["manifest.json", "public"],
     "PBXResourcesBuildPhase",
     groupName,
     targetUuid,

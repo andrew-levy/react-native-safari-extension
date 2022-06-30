@@ -33,21 +33,9 @@ If you used the `yarn add` command above, you'll need to add the plugin to your 
 
 ## Generating your extension
 
-To generate the extension, run `expo prebuild -p ios`. This will generate a folder named `web-extension` in the root of your project, containing the files responsible for building your extension. The prebuild command also generates the `ios` folder configured with your extension as a target.
+To generate the extension, run `expo prebuild -p ios`. This will generate a folder named `web-extension` in the root of your project, containing the files needed for building your extension. The prebuild command also generates the `ios` folder configured with your extension as a target.
 
-Some noteworthy folders and files that are generated in `web-extension`:
-
-#### `public/`
-
-This folder is linked as a reference so you can freely add, remove, or rename files inside of this folder. Just be sure not to rename it or move it elsewhere.
-
-#### `manifest.js`
-
-The manifest.json is used across a couple different web extension platforms meaning it has values which aren't supported everywhere. Using a manifest.js generation script means we can dynamically apply different values based on the build target.
-
-Every time the Xcode project is built, the manifest.json will be regenerated.
-
-## Run your extension
+## Running your extension
 
 To see the extension in action, you'll need to:
 
@@ -74,3 +62,5 @@ _Enter config plugins!_ Instead, this plugin allows you to write your extension 
 ## Acknowledgements
 
 This was heavily inspired by [Benedikt](https://twitter.com/bndkt)'s [App Clip Conflig Plugin](https://github.com/bndkt/react-native-app-clip).
+
+Thanks to [Evan Bacon](https://twitter.com/Baconbrix) for his helpful guidance and suggestions.

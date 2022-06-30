@@ -12,7 +12,7 @@ export default function addPbxGroup(
 ) {
   // Add PBX group
   const { uuid: pbxGroupUuid } = proj.addPbxGroup(
-    ["public", "_locales", "manifest.json"],
+    ["public", "manifest.json"],
     "web-extension",
     path.join(platformProjectRoot, "..", "web-extension")
   );
