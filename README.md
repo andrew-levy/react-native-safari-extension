@@ -9,16 +9,16 @@ Not sure what Safari Extensions are? Check out [Apple's Safari Extension documen
 ## Installation
 
 ```console
+expo install react-native-safari-extension
+# or
 yarn add react-native-safari-extension
 ```
 
 ## Configuring the plugin
 
-Once you have installed the package, you can configure the plugin in your `app.json`.
+If you used the `expo install` command above, the plugin will already be added to the plugins section within your `app.json`. Nice!
 
-The plugin takes in a `dir` option which specifies where the extension-related files should be output in your project. This directory will contain files responsible for customizing the extension's appearance and behavior.
-
-Here's an example `app.json`:
+If you used the `yarn add` command above, you'll need to add the plugin to your `app.json`:
 
 ```json
 {
@@ -26,62 +26,41 @@ Here's an example `app.json`:
     "name": "exampleApp",
     "slug": "exampleApp",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "bundleIdentifier": "com.example.myapp"
-    },
-    "plugins": [["react-native-safari-extension", { "dir": "src/extension" }]]
+    "plugins": ["react-native-safari-extension"]
   }
 }
 ```
 
-> **Note** If the `dir` option is not provided, the plugin will fallback to creating an `Extension/` folder in your project's root directory.
-
 ## Generating your extension
 
-To generate the extension, run `expo prebuild -p ios`. This will generate the extension files in your project and take care of all the necessary configurations.
+To generate the extension, run `expo prebuild -p ios`. This will generate a folder named `web-extension` in the root of your project, containing the files needed for building your extension. The prebuild command also generates the `ios` folder configured with your extension as a target.
 
-For example, if you specificed the `dir` option as `src/extension`, the plugin will generate the following files:
-
-```
-MyCoolApp/
-└─── src/
-    ├─── app/
-    └─── extension/
-        ├── _locales/
-        ├── images/
-        ├── manifest.json
-        ├── background.js
-        ├── content.js
-        ├── popup.js
-        ├── popup.css
-        └── popup.html
-```
+## Running your extension
 
 To see the extension in action, you'll need to:
 
 1. Run `expo run:ios`
-2. Once the app has successfully launched, open the Safari app and navigate to any webpage. Press the <span style="font-size:12px">A</span><span style="font-size:16px">A</span> button in the address bar. This will open a context menu.
+2. Once the app has successfully launched, open the Safari app and navigate to any webpage. Press the AA button in the address bar. This will open a context menu.
 3. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Mange Extensions.
 
 > **Note** You can also manage your extensions from the Settings app: _Settings > Safari > Extensions_
 
 ## Customizing your extension
 
-To customize your extension, you can edit the generated `html`, `js`, `css`, and other asset files.
+To customize your extension, you can edit the files within `web-extension/public/`. When you make a change, you will need to re-run `expo run:ios` to see your changes.
 
-You'll notice there is a `manifest.json` as well. The `manifest.json` file should conform to the [mdn browser extension manifest](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json#example) specification, and is the only file that every extension must contain. Using `manifest.json`, you can specify basic metadata about your extension such as the name and version, and can also specify aspects of your extension's functionality (such as background scripts, content scripts, icons, and browser actions).
-
-Once you make changes to your extension, re-run `expo prebuild -p ios`, and then run your application again to view the changes.
+In the future we hope to add hot reloading during development, as well as a way to use react-native-web to render React Native components in your extension. Ideally, you would render the contents of a `index.extension.js` file instead of manually writing html, css, and js.
 
 ## How it works
 
-If you wanted to set up a Safari Extension manually, you would need to go into XCode, add a new target, configure the extension, and build and run your project. From there, all of your work for customizing the extension is within the `ios` folder.
+If you wanted to set up a Safari Extension manually, you would need to open your project in XCode, add a new target, configure the extension, and build and run your project. From there, all of your work for customizing the extension is within the `ios` folder.
 
 Though these steps aren't too difficult, it forces you to think of your app and extension as two separate, unrelated projects living in two different places. And if you needed to delete your `ios` folder for some reason, you would have to remember to copy those files and redo the steps to create the extension again.
 
-_Enter config plugins!_ Instead, this plugin allows you to write your extension code in the same place as your app, making it feel like you are never leaving JS land. When you run the prebuild command, all of the XCode configurations will be set up properly and your extension files will be copied over to the `ios` folder.
+_Enter config plugins!_ Instead, this plugin allows you to write your extension code in the same place as your app, making it feel like you are never leaving JS land. When you run the prebuild command, all of the XCode configurations will be set up properly and your extension files will be referenced from the `ios` folder.
 
 ## Acknowledgements
 
 This was heavily inspired by [Benedikt](https://twitter.com/bndkt)'s [App Clip Conflig Plugin](https://github.com/bndkt/react-native-app-clip).
+
+Thanks to [Evan Bacon](https://twitter.com/Baconbrix) for his helpful guidance and suggestions.

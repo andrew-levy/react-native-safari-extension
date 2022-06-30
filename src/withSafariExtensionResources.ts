@@ -2,7 +2,7 @@ import { ConfigPlugin, withDangerousMod } from "@expo/config-plugins";
 import * as fs from "fs";
 import * as path from "path";
 
-import { getExtensionFolder } from "./withSafariExtension";
+import { getExtensionFolder } from "./utils";
 
 type SafariExtensionConfigOptions = {
   dir?: string;
@@ -22,34 +22,17 @@ export const withSafariExtensionResources: ConfigPlugin<
         extensionFolderName
       );
       const projectRootPath = path.join(extensionRootPath, "../..");
-      const extensionResourcesOut = path.join(extensionRootPath, "Resources");
-      const projectFilesDest =
-        options?.dir ?? path.join(projectRootPath, extensionFolderName);
-      const destAlreadyExists = fs.existsSync(projectFilesDest);
+      const destAlreadyExists = fs.existsSync(
+        path.join(projectRootPath, "web-extension")
+      );
 
+      // Copy the web-extension folder to the project root if it doesn't exist
       if (!destAlreadyExists) {
         await copyFolderRecursive(
-          path.join(__dirname, "Resources"),
-          projectFilesDest
-        );
-        const manifestContent = await fs.promises.readFile(
-          path.join(projectFilesDest, "manifest.json")
-        );
-        const manifestJSON = JSON.parse(manifestContent.toString());
-        manifestJSON.name = extensionFolderName;
-        await fs.promises.writeFile(
-          path.join(projectFilesDest, "manifest.json"),
-          JSON.stringify(manifestJSON, null, 2)
+          path.join(__dirname, "web-extension"),
+          path.join(projectRootPath, "web-extension")
         );
       }
-
-      // Copy either the default or the specified directory to `ios/{extensionName}/Resources/`.
-      await copyFolderRecursive(
-        options?.dir
-          ? path.join(projectRootPath, options.dir)
-          : path.join(projectRootPath, extensionFolderName),
-        extensionResourcesOut
-      );
 
       return config;
     },

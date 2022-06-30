@@ -1,6 +1,7 @@
 import { XcodeProject } from "@expo/config-plugins";
 
 import addBuildPhases from "./addBuildPhases";
+import addPbxGroup from "./addPbxGroup";
 import addProductFile from "./addProductFile";
 import addTargetDependency from "./addTargetDependency";
 import addToPbxNativeTargetSection from "./addToPbxNativeTargetSection";
@@ -40,6 +41,7 @@ export async function addSafariExtensionXcodeTarget(
     currentProjectVersion,
     marketingVersion,
     extensionName,
+    appName,
   });
 
   // Add product file
@@ -64,7 +66,7 @@ export async function addSafariExtensionXcodeTarget(
   // Add target dependency
   addTargetDependency(proj, target);
 
-  // // Add build phases
+  // Add build phases
   addBuildPhases(proj, {
     groupName,
     productFile,
@@ -73,7 +75,7 @@ export async function addSafariExtensionXcodeTarget(
   });
 
   // // Add PBXGroup
-  // addPbxGroup(proj, { appName, extensionFolder, platformProjectRoot });
+  addPbxGroup(proj, { appName, extensionFolder, platformProjectRoot });
 
   return true;
 }

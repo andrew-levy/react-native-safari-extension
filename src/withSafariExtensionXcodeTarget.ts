@@ -5,7 +5,7 @@ import {
   getExtensionBundleIdentifier,
   getExtensionFolder,
   getExtensionName,
-} from "./withSafariExtension";
+} from "./utils";
 import { addSafariExtensionXcodeTarget } from "./xcodeSafariExtension/xcodeSafariExtension";
 
 export const withSafariExtensionXcodeTarget: ConfigPlugin = (config) => {

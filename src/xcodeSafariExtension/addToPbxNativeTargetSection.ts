@@ -1,6 +1,6 @@
 import { XcodeProject } from "@expo/config-plugins";
 
-import { PBXFile, quoted } from "./util";
+import { PBXFile, quoted } from "../utils";
 
 export default function addToPbxNativeTargetSection(
   proj: XcodeProject,
