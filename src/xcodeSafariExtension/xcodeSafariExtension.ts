@@ -41,6 +41,7 @@ export async function addSafariExtensionXcodeTarget(
     currentProjectVersion,
     marketingVersion,
     extensionName,
+    appName,
   });
 
   // Add product file

@@ -10,18 +10,20 @@ export default function (
     currentProjectVersion,
     marketingVersion,
     extensionName,
+    appName,
   }: {
     extensionFolder: string;
     extensionBundleIdentifier: string;
     currentProjectVersion: string;
     marketingVersion: string;
     extensionName: string;
+    appName: string;
   }
 ) {
   const commonBuildSettings: any = {
     ASSETCATALOG_COMPILER_APPICON_NAME: "AppIcon",
     CLANG_ENABLE_MODULES: "YES",
-    CODE_SIGN_ENTITLEMENTS: `${extensionFolder}/${extensionFolder}.entitlements`,
+    CODE_SIGN_ENTITLEMENTS: `${appName}/${appName}.entitlements`,
     CURRENT_PROJECT_VERSION: quoted(currentProjectVersion),
     INFOPLIST_FILE: `${extensionFolder}/Info.plist`,
     // LD_RUNPATH_SEARCH_PATHS: quoted("$(inherited) @executable_path/Frameworks"),
