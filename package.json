@@ -1,6 +1,6 @@
 {
   "name": "react-native-safari-extension",
-  "version": "0.0.7",
+  "version": "0.0.6",
   "description": "Config plugin to add a Safari Extension to a React Native iOS app",
   "main": "build/withSafariExtension.js",
   "types": "build/withSafariExtension.d.ts",
@@ -9,7 +9,7 @@
     "app.plugin.js"
   ],
   "scripts": {
-    "copy-files": "copyfiles web-extension/* build  && copyfiles -u 1 \"web-extension/**/*\" build/web-extension  && copyfiles SafariWebExtensionHandler.h build && copyfiles SafariWebExtensionHandler.m build",
+    "copy-files": "copyfiles web-extension/* build  && copyfiles -u 1 \"web-extension/**/*\" build/web-extension  && copyfiles SafariWebExtensionHandler.swift build",
     "build": "npm run copy-files && expo-module build",
     "clean": "expo-module clean",
     "expo-module": "expo-module"
