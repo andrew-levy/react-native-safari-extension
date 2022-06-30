@@ -85,7 +85,7 @@ export default function addBuildPhases(
 
   // Resources build phase
   const { uuid: resourcesBuildPhaseUuid } = proj.addBuildPhase(
-    ["locales", "manifest.json", "public"],
+    ["_locales", "manifest.json", "public"],
     "PBXResourcesBuildPhase",
     groupName,
     targetUuid,
