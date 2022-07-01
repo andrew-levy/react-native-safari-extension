@@ -52,7 +52,7 @@ export default function addBuildPhases(
 
   // Sources build phase
   const { uuid: sourcesBuildPhaseUuid } = proj.addBuildPhase(
-    [path.join(extensionRootPath, "SafariWebExtensionHandler.m")],
+    [path.join(extensionRootPath, "SafariWebExtensionHandler.swift")],
     "PBXSourcesBuildPhase",
     groupName,
     targetUuid,
