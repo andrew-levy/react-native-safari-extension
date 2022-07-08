@@ -10,22 +10,22 @@ Not sure what Safari Extensions are? Check out [Apple's Safari Extension documen
 
 ```console
 expo install react-native-safari-extension
-# or
-yarn add react-native-safari-extension
+```
+
+This plugin has a dependency that you'll need to install as well
+
+```console
+yarn add @expo/webpack-config
 ```
 
 ## Configuring the plugin
 
-If you used the `expo install` command above, the plugin will already be added to the plugins section within your `app.json`. Nice!
-
-If you used the `yarn add` command above, you'll need to add the plugin to your `app.json`:
+If you used the `expo install` command above, the plugin will already be added to the plugins section within your `app.json`. Nice! If you used npm or yarn, then make sure the plugin is added.
 
 ```json
 {
   "expo": {
     "name": "exampleApp",
-    "slug": "exampleApp",
-    "version": "1.0.0",
     "plugins": ["react-native-safari-extension"]
   }
 }
@@ -33,23 +33,34 @@ If you used the `yarn add` command above, you'll need to add the plugin to your 
 
 ## Generating your extension
 
-To generate the extension, run `expo prebuild -p ios`. This will generate a folder named `web-extension` in the root of your project, containing the files needed for building your extension. The prebuild command also generates the `ios` folder configured with your extension as a target.
+To generate the extension, run `expo prebuild -p ios`. This will:
+
+- Generate a folder named `web-extension/` in the root of your project containing the files needed to build extension.
+
+- Generate `webpack.config.js` in the root of your project. This is necessary for HMR to work during development.
+- Generate the `ios/` folder in the root of your project. This will contain the native configurations for the extension.
 
 ## Running your extension
 
 To see the extension in action, you'll need to:
 
-1. Run `expo run:ios`
-2. Once the app has successfully launched, open the Safari app and navigate to any webpage. Press the AA button in the address bar. This will open a context menu.
-3. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Mange Extensions.
+1. Open `web-extension/index.js`. This is the entry point for your extension, similar to how ./index.js is the entry point for your app. Import the component you want to render in the extension, and register it.
+2. Run `expo run:ios` to run the application.
+3. Once the app has successfully launched, open the Safari app and navigate to any webpage. Press the AA button in the address bar. This will open a context menu.
+4. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Mange Extensions. Click on your extension to open it.
 
 > **Note** You can also manage your extensions from the Settings app: _Settings > Safari > Extensions_
 
-## Customizing your extension
+## Building your extension
 
-To customize your extension, you can edit the files within `web-extension/public/`. When you make a change, you will need to re-run `expo run:ios` to see your changes.
+This plugin makes it possible to leverage Hot Modue Replacement (HMR) while building Safari Extensions with very little setup. To enable HMR, you'll need to:
 
-In the future we hope to add hot reloading during development, as well as a way to use react-native-web to render React Native components in your extension. Ideally, you would render the contents of a `index.extension.js` file instead of manually writing html, css, and js.
+1. Make sure you have built your app with `expo run:ios`.
+2. Run `expo start --web`. This will start a development server on `localhost:19006`. If this port is already in use, make sure to update the new port value in `webpack.config.js`.
+3. Open your extension in Safari
+4. Make a change in your app code. This will cause the extension to reload.
+
+It's important that you dont change the name or location of the `web-extension/`, `public/`, `web-extension/manifest.json` and `web-extension/index.js` file.
 
 ## How it works
 

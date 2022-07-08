@@ -2,12 +2,11 @@ import { XcodeProject } from "@expo/config-plugins";
 
 export default function addProductFile(
   proj: XcodeProject,
-  extensionFolder: string,
-  targetUuid: string,
+  extensionName: string,
   groupName: string
 ) {
   const productFile = {
-    basename: `${extensionFolder}.appex`,
+    basename: `${extensionName}.appex`,
     fileRef: proj.generateUuid(),
     uuid: proj.generateUuid(),
     group: groupName,
@@ -16,7 +15,7 @@ export default function addProductFile(
       ATTRIBUTES: ["RemoveHeadersOnCopy"],
     },
     includeInIndex: 0,
-    path: `${extensionFolder}.appex`,
+    path: `${extensionName}.appex`,
     sourceTree: "BUILT_PRODUCTS_DIR",
   };
 

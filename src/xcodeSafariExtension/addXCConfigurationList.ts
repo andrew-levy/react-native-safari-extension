@@ -5,14 +5,12 @@ import { quoted } from "../utils";
 export default function (
   proj: XcodeProject,
   {
-    extensionFolder,
     extensionBundleIdentifier,
     currentProjectVersion,
     marketingVersion,
     extensionName,
     appName,
   }: {
-    extensionFolder: string;
     extensionBundleIdentifier: string;
     currentProjectVersion: string;
     marketingVersion: string;
@@ -25,9 +23,7 @@ export default function (
     CLANG_ENABLE_MODULES: "YES",
     CODE_SIGN_ENTITLEMENTS: `${appName}/${appName}.entitlements`,
     CURRENT_PROJECT_VERSION: quoted(currentProjectVersion),
-    INFOPLIST_FILE: `${extensionFolder}/Info.plist`,
-    // LD_RUNPATH_SEARCH_PATHS: quoted("$(inherited) @executable_path/Frameworks"),
-    // OTHER_LDFLAGS: `("$(inherited)", "-ObjC", "-lc++")`,
+    INFOPLIST_FILE: `${extensionName}/Info.plist`,
     MARKETING_VERSION: quoted(marketingVersion),
     PRODUCT_BUNDLE_IDENTIFIER: extensionBundleIdentifier,
     PRODUCT_NAME: quoted(extensionName),
@@ -57,7 +53,7 @@ export default function (
   const xCConfigurationList = proj.addXCConfigurationList(
     buildConfigurationsList,
     "Release",
-    `Build configuration list for PBXNativeTarget ${quoted(extensionFolder)} `
+    `Build configuration list for PBXNativeTarget ${quoted(extensionName)} `
   );
 
   console.log(`Added XCConfigurationList ${xCConfigurationList.uuid}`);
