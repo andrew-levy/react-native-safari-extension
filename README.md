@@ -76,24 +76,19 @@ This plugin makes it possible to leverage Hot Modue Replacement (HMR) while buil
 
 ## Why is this plugin useful?
 
-Before this plugin:
+#### Without this plugin:
 
-- Would have to manually add a new target in XCode
-- All development for the extension is done within the `ios/` folder.
-- No HMR. Have to rebuild everyytime you make a change.
--
+- :confused: Have to manually add a new target in XCode
+- :-1: All development for the extension is done within the `ios/` folder
+- :snail: Have to rebuild everytime you make a change
+- :sob: Have to write html, css, and js
 
-After this plugin:
+#### With this plugin:
 
-- No need to touch XCode. Just install the plugin and it will generate the necessary files.
-- No development in the `ios/` folder.
-- :fire: HMR! You can make changes to your app and the extension will reload automatically on save.
-
-If you wanted to set up a Safari Extension manually, you would need to open your project in XCode, add a new target, configure the extension, and build and run your project. From there, all of your work for customizing the extension is within the `ios` folder.
-
-Though these steps aren't too difficult, it forces you to think of your app and extension as two unrelated projects, with no ability to share code between the two. And if you needed to delete your `ios` folder for some reason, you would have to remember to copy those files and redo the steps to create the extension again.
-
-_Enter config plugins!_ Instead, this plugin allows you to write your extension code in the same place as your app, making it feel like you are never leaving JS land. When you run the prebuild command, all of the XCode configurations will be set up properly and your extension files will be referenced from the `ios` folder. Oh, and there's HMR!
+- :sunglasses: No need to touch XCode - just install the plugin and it will generate the necessary files
+- :raised_hands: No development in the `ios/` folder
+- :fire: HMR! You can make changes to your app and the extension will reload automatically when you save
+- :tada: Can write JSX/TSX
 
 ## Acknowledgements
 
