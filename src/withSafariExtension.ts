@@ -5,19 +5,11 @@ import { withSafariExtensionPlist } from "./withSafariExtensionPlist";
 import { withSafariExtensionXcodeTarget } from "./withSafariExtensionXcodeTarget";
 import { withSafariExtensionResources } from "./withSafariExtensionResources";
 
-type SafariExtensionConfigOptions = {
-  dir?: string;
-};
-
-const withSafariExtension: ConfigPlugin<SafariExtensionConfigOptions> = (
-  config,
-  options
-) => {
+const withSafariExtension: ConfigPlugin = (config) => {
   config = withSafariExtensionHandler(config);
-  config = withSafariExtensionResources(config, options);
+  config = withSafariExtensionResources(config);
   config = withSafariExtensionPlist(config);
   config = withSafariExtensionXcodeTarget(config);
-
   return config;
 };
 

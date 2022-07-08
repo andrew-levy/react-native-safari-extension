@@ -1,20 +1,14 @@
 import { XcodeProject } from "@expo/config-plugins";
 import * as fs from "fs";
 import * as path from "path";
+import { WEB_EXTENSION } from "../utils";
 
-export default function addPbxGroup(
-  proj: XcodeProject,
-  {
-    appName,
-    extensionFolder,
-    platformProjectRoot,
-  }: { appName: string; extensionFolder: string; platformProjectRoot: string }
-) {
+export default function addPbxGroup(proj: XcodeProject) {
   // Add PBX group
   const { uuid: pbxGroupUuid } = proj.addPbxGroup(
     ["public", "manifest.json"],
-    "web-extension",
-    path.join(platformProjectRoot, "..", "web-extension")
+    WEB_EXTENSION,
+    `../${WEB_EXTENSION}`
   );
   console.log(`Added PBXGroup ${pbxGroupUuid}`);
 

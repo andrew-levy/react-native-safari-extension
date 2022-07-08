@@ -6,58 +6,89 @@ Not sure what Safari Extensions are? Check out [Apple's Safari Extension documen
 
 > **Warning** This plugin is a work in progress so there may be some bugs. Please feel free to contribute by reporting any issues or opening a PR.
 
-## Installation
+## Getting Started
+
+1. Install the plugin
 
 ```console
 expo install react-native-safari-extension
-# or
-yarn add react-native-safari-extension
 ```
 
-## Configuring the plugin
+2. Install its dependencies
 
-If you used the `expo install` command above, the plugin will already be added to the plugins section within your `app.json`. Nice!
+```console
+yarn add @expo/webpack-config
+```
 
-If you used the `yarn add` command above, you'll need to add the plugin to your `app.json`:
+3. Configuring the plugin in your `app.json`. If you used the `expo install` command above, this should already be done for you!
 
 ```json
 {
   "expo": {
     "name": "exampleApp",
-    "slug": "exampleApp",
-    "version": "1.0.0",
     "plugins": ["react-native-safari-extension"]
   }
 }
 ```
 
+4. Add the following script to your `package.json`. This will be useful if you plan on leveraging Hot Module Replacement (HMR):
+
+```json
+{
+  "scripts": {
+    "extension": "WEB_EXTENSION=true expo start:web"
+  }
+}
+```
+
+> **Note** The `WEB_EXTENSION` environment variable is used to tell webpack that we are targeting the Safari Extension and not the web app version of our project. This is important because we need to use a different webpack configurations for each.
+
 ## Generating your extension
 
-To generate the extension, run `expo prebuild -p ios`. This will generate a folder named `web-extension` in the root of your project, containing the files needed for building your extension. The prebuild command also generates the `ios` folder configured with your extension as a target.
+To generate the extension, run `expo prebuild -p ios`. This will:
+
+- Generate a folder named `web-extension/` in the root of your project containing the files needed to build extension.
+
+- Generate `webpack.config.js` in the root of your project. This is necessary for HMR to work during development.
+- Generate the `ios/` folder in the root of your project. This will contain the native configurations for the extension.
+
+> **Note** It's important that you dont change the name or location of `web-extension/`, `web-extension/public/`, `web-extension/manifest.json` and `web-extension/index.js`. That being said, you can move, rename, and modify any files within the `public/` folder.
 
 ## Running your extension
 
-To see the extension in action, you'll need to:
+To see the extension in action, do the following:
 
-1. Run `expo run:ios`
-2. Once the app has successfully launched, open the Safari app and navigate to any webpage. Press the AA button in the address bar. This will open a context menu.
-3. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Mange Extensions.
+1. Open `web-extension/index.js`. This is the entry point for your extension, similar to how `./index.js` is the entry point for your app. This is necessary since you probably don't want to render your whole app inside of the web extension. Go ahead and import the component you want to render in the extension, and register it.
+2. Run `expo run:ios` to run the application.
+3. Once the app has successfully launched, open the Safari app and navigate to any webpage and press the AA button in the address bar. This will open a context menu.
+4. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
 
 > **Note** You can also manage your extensions from the Settings app: _Settings > Safari > Extensions_
 
-## Customizing your extension
+## Developing your extension
 
-To customize your extension, you can edit the files within `web-extension/public/`. When you make a change, you will need to re-run `expo run:ios` to see your changes.
+This plugin makes it possible to leverage Hot Modue Replacement (HMR) while building Safari Extensions with very little setup. To start building with HMR:
 
-In the future we hope to add hot reloading during development, as well as a way to use react-native-web to render React Native components in your extension. Ideally, you would render the contents of a `index.extension.js` file instead of manually writing html, css, and js.
+0. Make sure you have built your app with `expo run:ios`.
+1. Run `yarn extension` (see [#4 of Getting Started](#getting-started)). This will start a development server on `localhost:19006`. If this port is already in use, make sure to update the new port value in `webpack.config.js`.
+2. Open your extension in Safari
+3. Make a change in your app code. This will cause the extension to reload whenever you save a file.
 
-## How it works
+## Why is this plugin useful?
 
-If you wanted to set up a Safari Extension manually, you would need to open your project in XCode, add a new target, configure the extension, and build and run your project. From there, all of your work for customizing the extension is within the `ios` folder.
+#### Without this plugin:
 
-Though these steps aren't too difficult, it forces you to think of your app and extension as two separate, unrelated projects living in two different places. And if you needed to delete your `ios` folder for some reason, you would have to remember to copy those files and redo the steps to create the extension again.
+- :confused: Have to manually add a new target in XCode
+- :-1: All development for the extension is done within the `ios/` folder
+- :snail: Have to rebuild everytime you make a change
+- :sob: Have to write html, css, and js
 
-_Enter config plugins!_ Instead, this plugin allows you to write your extension code in the same place as your app, making it feel like you are never leaving JS land. When you run the prebuild command, all of the XCode configurations will be set up properly and your extension files will be referenced from the `ios` folder.
+#### With this plugin:
+
+- :sunglasses: No need to touch XCode - just install the plugin and it will generate the necessary files
+- :raised_hands: No development in the `ios/` folder
+- :fire: HMR! You can make changes to your app and the extension will reload automatically when you save
+- :tada: Can write JSX/TSX
 
 ## Acknowledgements
 
