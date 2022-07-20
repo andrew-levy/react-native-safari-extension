@@ -1,8 +1,17 @@
 # react-native-safari-extension
 
-Expo config plugin that generates a Safari Extension for iOS apps.
+## What is it?
+
+An [Expo Config Plugin](https://docs.expo.dev/guides/config-plugins/) that generates a Safari Extension for iOS apps.
 
 Not sure what Safari Extensions are? Check out [Apple's Safari Extension documentation](https://developer.apple.com/safari/extensions/) to learn more.
+
+#### Highlights
+
+- :sunglasses: No need to touch XCode
+- :raised_hands: No development in the `ios/` folder
+- :fire: Hot Module Replacement
+- :tada: Can write JSX/TSX
 
 > **Warning** This plugin is a work in progress so there may be some bugs. Please feel free to contribute by reporting any issues or opening a PR.
 
@@ -67,7 +76,7 @@ Follow these steps to see your extension in action:
 
 ## Developing your extension
 
-This plugin makes it possible to leverage Hot Modue Replacement (HMR) while building Safari Extensions with very little setup. To start building with HMR:
+This plugin makes it possible to leverage Hot Module Replacement (HMR) while building Safari Extensions with very little setup. To start building with HMR:
 
 1. Make sure your app is running
 2. Run `yarn start:extension` (see [#4 of Getting Started](#getting-started)) to start a development server on `localhost:19006` with HMR enabled
@@ -82,22 +91,6 @@ Once you are ready to build your project in a non-development environment (e.g. 
 2. Run `expo run:ios`
 
 Anytime you need to switch from development to production, and vice versa, make sure to re-run your app.
-
-## Why is this plugin useful?
-
-#### Without this plugin:
-
-- :confused: Have to manually add a new target in XCode
-- :-1: All development for the extension is done within the `ios/` folder
-- :snail: Have to rebuild everytime you make a change
-- :sob: Have to write your own HMTL, CSS, and JS
-
-#### With this plugin:
-
-- :sunglasses: No need to touch XCode
-- :raised_hands: No development in the `ios/` folder
-- :fire: HMR! You can make changes to your code and the extension will reload automatically when you save
-- :tada: Can write JSX/TSX
 
 ## Acknowledgements
 

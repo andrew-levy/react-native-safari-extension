@@ -8,6 +8,6 @@ const withWebpackSafariExtension = require("react-native-safari-extension/build/
 module.exports = async function (env, argv) {
   let config = await createExpoWebpackConfigAsync(env, argv);
   return process.env.WEB_EXTENSION
-    ? withWebpackSafariExtension(config, 19006)
+    ? withWebpackSafariExtension(config)
     : config;
 };

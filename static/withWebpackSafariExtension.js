@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-function withWebpackSafariExtension(config, port) {
+function withWebpackSafariExtension(config, port = 19006) {
   // Modify the entry point
   const indexJsEntryIndex = config.entry.app.findIndex((entry) =>
     entry.includes("index.js")
