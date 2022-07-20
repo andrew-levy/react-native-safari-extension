@@ -1,7 +1,9 @@
 import { ConfigPlugin, withXcodeProject } from "@expo/config-plugins";
+import path from "path";
 import {
   getExtensionBundleIdentifier,
   getExtensionIosFolderName,
+  WEB_EXTENSION,
 } from "./utils";
 import { addSafariExtensionXcodeTarget } from "./xcodeSafariExtension/xcodeSafariExtension";
 

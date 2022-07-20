@@ -12,7 +12,7 @@ export const withSafariExtensionHandler: ConfigPlugin = (config) => {
         getExtensionIosFolderName(config.modRequest.projectName!)
       );
       await fs.promises.copyFile(
-        path.join(__dirname, "SafariWebExtensionHandler.swift"),
+        path.join(__dirname, "static", "SafariWebExtensionHandler.swift"),
         path.join(extensionRootPath, "SafariWebExtensionHandler.swift")
       );
       return config;

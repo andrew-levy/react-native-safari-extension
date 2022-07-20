@@ -18,13 +18,13 @@ export const withSafariExtensionResources: ConfigPlugin = (config) => {
 
       if (!destAlreadyExists) {
         await copyFolderRecursive(
-          path.join(__dirname, WEB_EXTENSION),
+          path.join(__dirname, "static", WEB_EXTENSION),
           path.join(projectRootPath, WEB_EXTENSION)
         );
       }
 
       await fs.promises.copyFile(
-        path.join(__dirname, "webpack.config.js"),
+        path.join(__dirname, "static/webpack.config.js"),
         path.join(projectRootPath, "webpack.config.js")
       );
 
