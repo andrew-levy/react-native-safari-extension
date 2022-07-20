@@ -31,12 +31,13 @@ yarn add @expo/webpack-config
 }
 ```
 
-4. Add the following script to your `package.json`. This will be useful if you plan on leveraging Hot Module Replacement (HMR):
+4. Add the following scripts to your `package.json`. These will be useful later on:
 
 ```json
 {
   "scripts": {
-    "extension": "WEB_EXTENSION=true expo start:web"
+    "start:extension": "WEB_EXTENSION=true expo start:web",
+    "build:extension": "WEB_EXTENSION=true expo build:web"
   }
 }
 ```
@@ -45,22 +46,21 @@ yarn add @expo/webpack-config
 
 ## Generating your extension
 
-To generate the extension, run `expo prebuild -p ios`. This will:
+To generate the extension, run `expo prebuild -p ios`. This will generate:
 
-- Generate a folder named `web-extension/` in the root of your project containing the files needed to build extension.
+- `web-extension/` in the root of your project containing the files needed to build extension.
+- `webpack.config.js` in the root of your project. This is necessary for HMR to work during development.
+- `ios/` folder in the root of your project. This will contain the native configurations for the extension.
 
-- Generate `webpack.config.js` in the root of your project. This is necessary for HMR to work during development.
-- Generate the `ios/` folder in the root of your project. This will contain the native configurations for the extension.
-
-> **Note** It's important that you dont change the name or location of `web-extension/`, `web-extension/public/`, `web-extension/manifest.json` and `web-extension/index.js`. That being said, you can move, rename, and modify any files within the `public/` folder.
+> **Note** Read more about the `web-extension/` folder [here](./web-extension/README.md).
 
 ## Running your extension
 
-To see the extension in action, do the following:
+Follow these steps to see your extension in action:
 
-1. Open `web-extension/index.js`. This is the entry point for your extension, similar to how `./index.js` is the entry point for your app. This is necessary since you probably don't want to render your whole app inside of the web extension. Go ahead and import the component you want to render in the extension, and register it.
+1. Open `web-extension/index.js`. This is the entry point for your extension, similar to how `./index.js` is the entry point for your app. Go ahead and import the component you want to render in the extension, and register it.
 2. Run `expo run:ios` to run the application.
-3. Once the app has successfully launched, open the Safari app and navigate to any webpage and press the AA button in the address bar. This will open a context menu.
+3. Once the app has successfully launched, open the Safari app, navigate to any webpage, and press the AA button in the address bar. This will open a context menu.
 4. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
 
 > **Note** You can also manage your extensions from the Settings app: _Settings > Safari > Extensions_
@@ -69,10 +69,19 @@ To see the extension in action, do the following:
 
 This plugin makes it possible to leverage Hot Modue Replacement (HMR) while building Safari Extensions with very little setup. To start building with HMR:
 
-0. Make sure you have built your app with `expo run:ios`.
-1. Run `yarn extension` (see [#4 of Getting Started](#getting-started)). This will start a development server on `localhost:19006`. If this port is already in use, make sure to update the new port value in `webpack.config.js`.
-2. Open your extension in Safari
-3. Make a change in your app code. This will cause the extension to reload whenever you save a file.
+1. Make sure your app is running
+2. Run `yarn start:extension` (see [#4 of Getting Started](#getting-started)) to start a development server on `localhost:19006` with HMR enabled
+3. Open your extension in Safari
+4. Make a change in your app code - this will cause the extension to reload whenever you save a file
+
+## Building for Production
+
+Once you are ready to build your project in a non-development environment (e.g. with `eas build`), you first need to generate the static files for your extension. This is similar to a production build for your expo web app. To do this:
+
+1. Run `yarn build:extension`. This will generate the static js files and output them here: `web-extension/public/static/`.
+2. Run `expo run:ios`
+
+Anytime you need to switch from development to production, and vice versa, make sure to re-run your app.
 
 ## Why is this plugin useful?
 
@@ -81,13 +90,13 @@ This plugin makes it possible to leverage Hot Modue Replacement (HMR) while buil
 - :confused: Have to manually add a new target in XCode
 - :-1: All development for the extension is done within the `ios/` folder
 - :snail: Have to rebuild everytime you make a change
-- :sob: Have to write html, css, and js
+- :sob: Have to write your own HMTL, CSS, and JS
 
 #### With this plugin:
 
-- :sunglasses: No need to touch XCode - just install the plugin and it will generate the necessary files
+- :sunglasses: No need to touch XCode
 - :raised_hands: No development in the `ios/` folder
-- :fire: HMR! You can make changes to your app and the extension will reload automatically when you save
+- :fire: HMR! You can make changes to your code and the extension will reload automatically when you save
 - :tada: Can write JSX/TSX
 
 ## Acknowledgements

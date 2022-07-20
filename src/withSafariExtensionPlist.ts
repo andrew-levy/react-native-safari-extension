@@ -26,6 +26,7 @@ export const withSafariExtensionPlist: ConfigPlugin = (config) => {
       };
 
       extensionPlist.CFBundleName = "$(PRODUCT_NAME)";
+      extensionPlist.CFBundleDisplayName = "Extension";
       extensionPlist.CFBundleIdentifier = "$(PRODUCT_BUNDLE_IDENTIFIER)";
       extensionPlist.CFBundleVersion = "$(CURRENT_PROJECT_VERSION)";
       extensionPlist.CFBundleExecutable = "$(EXECUTABLE_NAME)";
