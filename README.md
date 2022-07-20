@@ -89,6 +89,7 @@ Once you are ready to build your project in a non-development environment (e.g. 
 
 1. Run `yarn build:extension` (see [#4 of Getting Started](#getting-started)). This will generate the static js files and output them here: `web-extension/public/static/js`.
 2. Run `expo run:ios`
+3. Now you can use `eas build` to build your extension for production.
 
 Anytime you need to switch from development to production, and vice versa, make sure to re-run your app.
 
