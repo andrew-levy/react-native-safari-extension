@@ -78,7 +78,7 @@ This plugin makes it possible to leverage Hot Modue Replacement (HMR) while buil
 
 Once you are ready to build your project in a non-development environment (e.g. with `eas build`), you first need to generate the static files for your extension. This is similar to a production build for your expo web app. To do this:
 
-1. Run `yarn build:extension`. This will generate the static js files and output them here: `web-extension/public/static/`.
+1. Run `yarn build:extension` (see [#4 of Getting Started](#getting-started)). This will generate the static js files and output them here: `web-extension/public/static/js`.
 2. Run `expo run:ios`
 
 Anytime you need to switch from development to production, and vice versa, make sure to re-run your app.
