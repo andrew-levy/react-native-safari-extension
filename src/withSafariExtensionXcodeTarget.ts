@@ -1,30 +1,18 @@
 import { ConfigPlugin, withXcodeProject } from "@expo/config-plugins";
-import path from "path";
-import {
-  getExtensionBundleIdentifier,
-  getExtensionIosFolderName,
-  WEB_EXTENSION,
-} from "./utils";
 import { addSafariExtensionXcodeTarget } from "./xcodeSafariExtension/xcodeSafariExtension";
 
-export const withSafariExtensionXcodeTarget: ConfigPlugin = (config) => {
+export const withSafariExtensionXcodeTarget: ConfigPlugin<{
+  folderName: string;
+}> = (config, { folderName }) => {
   return withXcodeProject(config, (config) => {
-    const appName = config.modRequest.projectName!;
-    const extensionName = getExtensionIosFolderName(
-      config.modRequest.projectName!
-    );
-    const extensionBundleIdentifier = getExtensionBundleIdentifier(
-      config.ios!.bundleIdentifier!
-    );
-    const currentProjectVersion = config.ios!.buildNumber || "1";
-    const marketingVersion = config.version!;
-
     addSafariExtensionXcodeTarget(config.modResults, {
-      appName,
-      extensionName,
-      extensionBundleIdentifier,
-      currentProjectVersion,
-      marketingVersion,
+      appName: config.modRequest.projectName!,
+      extensionName: folderName,
+      extensionBundleIdentifier: `${config.ios!
+        .bundleIdentifier!}.${folderName}`,
+      currentProjectVersion: config.ios!.buildNumber || "1",
+      marketingVersion: config.version!,
+      iosRoot: config.modRequest.platformProjectRoot,
     });
 
     return config;

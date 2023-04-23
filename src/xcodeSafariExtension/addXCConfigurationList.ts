@@ -56,7 +56,5 @@ export default function (
     `Build configuration list for PBXNativeTarget ${quoted(extensionName)} `
   );
 
-  console.log(`Added XCConfigurationList ${xCConfigurationList.uuid}`);
-
   return xCConfigurationList;
 }

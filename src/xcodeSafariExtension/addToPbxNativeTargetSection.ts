@@ -33,7 +33,5 @@ export default function addToPbxNativeTargetSection(
 
   proj.addToPbxNativeTargetSection(target);
 
-  console.log(`Added PBXNativeTarget ${target.uuid}`);
-
   return target;
 }
