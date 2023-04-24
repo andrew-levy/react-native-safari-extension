@@ -6,15 +6,18 @@ import {
 import plist from "@expo/plist";
 import * as fs from "fs";
 import * as path from "path";
-import { getExtensionIosFolderName } from "./utils";
+import { copyFolderRecursive } from "./utils";
 
-export const withSafariExtensionPlist: ConfigPlugin = (config) => {
+export const withSafariExtensionPlist: ConfigPlugin<{ folderName: string }> = (
+  config,
+  { folderName }
+) => {
   return withDangerousMod(config, [
     "ios",
     async (config) => {
       const extensionRootPath = path.join(
-        config.modRequest.platformProjectRoot,
-        getExtensionIosFolderName(config.modRequest.projectName!)
+        config.modRequest.projectRoot,
+        folderName
       );
       const extensionFilePath = path.join(extensionRootPath, "Info.plist");
 
@@ -36,9 +39,18 @@ export const withSafariExtensionPlist: ConfigPlugin = (config) => {
       await fs.promises.mkdir(path.dirname(extensionFilePath), {
         recursive: true,
       });
+
       await fs.promises.writeFile(
         extensionFilePath,
         plist.build(extensionPlist)
+      );
+
+      await copyFolderRecursive(
+        path.join(path.resolve(config.modRequest.projectRoot), folderName),
+        path.join(
+          path.resolve(config.modRequest.platformProjectRoot),
+          folderName
+        )
       );
 
       return config;

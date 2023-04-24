@@ -1,5 +1,4 @@
 import { XcodeProject } from "@expo/config-plugins";
-
 import addBuildPhases from "./addBuildPhases";
 import addPbxGroup from "./addPbxGroup";
 import addProductFile from "./addProductFile";
@@ -14,6 +13,7 @@ type AddXCodeTargetParmas = {
   extensionBundleIdentifier: string;
   currentProjectVersion: string;
   marketingVersion: string;
+  iosRoot: string;
 };
 
 export async function addSafariExtensionXcodeTarget(
@@ -24,6 +24,7 @@ export async function addSafariExtensionXcodeTarget(
     extensionBundleIdentifier,
     currentProjectVersion,
     marketingVersion,
+    iosRoot,
   }: AddXCodeTargetParmas
 ) {
   if (proj.getFirstProject().firstProject.targets?.length > 1) return true;
@@ -51,8 +52,9 @@ export async function addSafariExtensionXcodeTarget(
     productFile,
     targetUuid,
     extensionName,
+    iosRoot,
   });
-  addPbxGroup(proj);
+  addPbxGroup(proj, { extensionName });
 
   return true;
 }

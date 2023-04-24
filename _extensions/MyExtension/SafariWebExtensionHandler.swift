@@ -1,3 +1,10 @@
+//
+//  SafariWebExtensionHandler.swift
+//  NewTestExtension
+//
+//  Created by {author} on 6/22/22.
+//
+
 import SafariServices
 import os.log
 

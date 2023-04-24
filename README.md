@@ -1,5 +1,7 @@
 # react-native-safari-extension
 
+> **Warning** This plugin is a work in progress so there may be some bugs. Please feel free to contribute by reporting any issues or opening a PR.
+
 ## What is it?
 
 An [Expo Config Plugin](https://docs.expo.dev/guides/config-plugins/) that generates a Safari Extension for iOS apps.
@@ -9,11 +11,7 @@ Not sure what Safari Extensions are? Check out [Apple's Safari Extension documen
 #### Highlights
 
 - :sunglasses: No need to touch XCode
-- :raised_hands: No development in the `ios/` folder
-- :fire: Hot Module Replacement
-- :tada: Can write JSX/TSX
-
-> **Warning** This plugin is a work in progress so there may be some bugs. Please feel free to contribute by reporting any issues or opening a PR.
+- :raised_hands: Works with Expo managed and bare workflows
 
 ## Getting Started
 
@@ -23,75 +21,41 @@ Not sure what Safari Extensions are? Check out [Apple's Safari Extension documen
 expo install react-native-safari-extension
 ```
 
-2. Install its dependencies
-
-```console
-yarn add @expo/webpack-config
-```
-
-3. Configuring the plugin in your `app.json`. If you used the `expo install` command above, this should already be done for you!
+2. Configuring the plugin in your `app.json`. Add a `folderName` field to specify where your extension files will live.
 
 ```json
 {
   "expo": {
-    "name": "exampleApp",
-    "plugins": ["react-native-safari-extension"]
+    "name": "myApp",
+    "plugins": [
+      ["react-native-safari-extension", { "folderName": "MyExtension" }]
+    ]
   }
 }
 ```
 
-4. Add the following scripts to your `package.json`. These will be useful later on:
+3. Add your extension files to the folder with the name provided above. You can use one of the examples in the `_extensions` directory as a reference.
 
-```json
-{
-  "scripts": {
-    "start:extension": "WEB_EXTENSION=true expo start:web",
-    "build:extension": "WEB_EXTENSION=true expo build:web"
-  }
-}
+```console
+
+├── app.json # <-- your app.json
+├── MyExtension # <-- the folder name you provided in the plugin config
+│   ├── Resources/
+│   └── Info.plist
+│   └── SafariExtensionHandler.swift
+├── node_modules
+├── package.json
+├── yarn.lock
+└── ...
 ```
 
-> **Note** The `WEB_EXTENSION` environment variable is used to tell webpack that we are targeting the Safari Extension and not the web app version of our project. This is important because we need to use a different webpack configurations for each.
+> **Note** The folder name must match the name you provided in the plugin config. All of your scripts and resources must live in a folder with the name `Resources`.
 
-## Generating your extension
+4. If you are using a Expo managed workflow, run a build using EAS. Before it builds, it will run the prebuild step, which triggers the plugin and any other you have specified. If you are using a bare workflow, run `npx expo prebuild -p ios` to run the plugin manually, then run `npx expo run:ios`.
 
-To generate the extension, run `expo prebuild -p ios`. This will generate:
-
-- `web-extension/` in the root of your project containing the files needed to build extension.
-- `webpack.config.js` in the root of your project. This is necessary for HMR to work during development.
-- `ios/` folder in the root of your project. This will contain the native configurations for the extension.
-
-> **Note** Read more about the `web-extension/` folder [here](./web-extension/README.md).
-
-## Running your extension
-
-Follow these steps to see your extension in action:
-
-1. Open `web-extension/index.js`. This is the entry point for your extension, similar to how `./index.js` is the entry point for your app. Go ahead and import the component you want to render in the extension, and register it.
-2. Run `expo run:ios` to run the application.
-3. Once the app has successfully launched, open the Safari app, navigate to any webpage, and press the AA button in the address bar. This will open a context menu.
-4. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
+5. Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
 
 > **Note** You can also manage your extensions from the Settings app: _Settings > Safari > Extensions_
-
-## Developing your extension
-
-This plugin makes it possible to leverage Hot Module Replacement (HMR) while building Safari Extensions with very little setup. To start building with HMR:
-
-1. Make sure your app is running
-2. Run `yarn start:extension` (see [#4 of Getting Started](#getting-started)) to start a development server on `localhost:19006` with HMR enabled
-3. Open your extension in Safari
-4. Make a change in your app code - this will cause the extension to reload whenever you save a file
-
-## Building for Production
-
-Once you are ready to build your project in a non-development environment (e.g. with `eas build`), you first need to generate the static files for your extension. This is similar to a production build for your expo web app. To do this:
-
-1. Run `yarn build:extension` (see [#4 of Getting Started](#getting-started)). This will generate the static js files and output them here: `web-extension/public/static/js`.
-2. Run `expo run:ios`
-3. Now you can use `eas build` to build your extension for production.
-
-Anytime you need to switch from development to production, and vice versa, make sure to re-run your app.
 
 ## Acknowledgements
 

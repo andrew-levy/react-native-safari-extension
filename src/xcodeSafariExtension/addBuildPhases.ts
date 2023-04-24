@@ -1,5 +1,6 @@
 import { XcodeProject } from "@expo/config-plugins";
-
+import fs from "fs";
+import path from "path";
 import { PBXFile, quoted } from "../utils";
 
 type AddBuildPhaseParams = {
@@ -7,11 +8,18 @@ type AddBuildPhaseParams = {
   productFile: PBXFile;
   targetUuid: string;
   extensionName: string;
+  iosRoot: string;
 };
 
 export default function addBuildPhases(
   proj: XcodeProject,
-  { groupName, productFile, targetUuid, extensionName }: AddBuildPhaseParams
+  {
+    groupName,
+    productFile,
+    targetUuid,
+    extensionName,
+    iosRoot,
+  }: AddBuildPhaseParams
 ) {
   const buildPath = quoted("");
 
@@ -24,7 +32,6 @@ export default function addBuildPhases(
     "app_extension",
     buildPath
   );
-  console.log(`Added PBXSourcesBuildPhase ${sourcesBuildPhaseUuid}`);
 
   // Copy files build phase
   const { uuid: copyFilesBuildPhaseUuid } = proj.addBuildPhase(
@@ -35,7 +42,6 @@ export default function addBuildPhases(
     "app_extension",
     buildPath
   );
-  console.log(`Added PBXCopyFilesBuildPhase ${copyFilesBuildPhaseUuid}`);
 
   // Frameworks build phase
   const { uuid: frameworksBuildPhaseUuid } = proj.addBuildPhase(
@@ -46,16 +52,20 @@ export default function addBuildPhases(
     "app_extension",
     buildPath
   );
-  console.log(`Added PBXResourcesBuildPhase ${frameworksBuildPhaseUuid}`);
+
+  const resources = fs
+    .readdirSync(path.join(iosRoot, extensionName, "Resources"))
+    .map((file) => {
+      return `${extensionName}/Resources/${file}`;
+    });
 
   // Resources build phase
   const { uuid: resourcesBuildPhaseUuid } = proj.addBuildPhase(
-    ["manifest.json", "public"],
+    resources,
     "PBXResourcesBuildPhase",
     groupName,
     targetUuid,
     "app_extension",
     buildPath
   );
-  console.log(`Added PBXResourcesBuildPhase ${resourcesBuildPhaseUuid}`);
 }
