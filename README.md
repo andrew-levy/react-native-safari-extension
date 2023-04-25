@@ -4,31 +4,29 @@
 
 ## What is it?
 
-An [Expo Config Plugin](https://docs.expo.dev/guides/config-plugins/) that generates a Safari Extension for iOS apps.
+An [Expo Config Plugin](https://docs.expo.dev/guides/config-plugins/) that allows you to add a Safari Extension to your iOS apps.
 
-Not sure what Safari Extensions are? Check out [Apple's Safari Extension documentation](https://developer.apple.com/safari/extensions/) to learn more.
-
-#### Highlights
-
-- :sunglasses: No need to touch XCode
-- :raised_hands: Works with Expo managed and bare workflows
+> **Note** Not sure what Safari Extensions are? Check out [Apple's Safari Extension documentation](https://developer.apple.com/safari/extensions/) to learn more.
 
 ## Getting Started
 
 1. Install the plugin
 
 ```console
-expo install react-native-safari-extension
+npx expo install react-native-safari-extension
 ```
 
-2. Configuring the plugin in your `app.json`. Add a `folderName` field to specify where your extension files will live.
+2. Configuring the plugin in your `app.json`. Specify a `folderName` pointing to where your extension files will live, and a `teamID` so your extension can be signed properly. [Need help finding your Team ID?](https://developer.apple.com/help/account/manage-your-team/locate-your-team-id/)
 
 ```json
 {
   "expo": {
     "name": "myApp",
     "plugins": [
-      ["react-native-safari-extension", { "folderName": "MyExtension" }]
+      [
+        "react-native-safari-extension",
+        { "folderName": "MyExtension", "teamID": "XXXXXXXXXX" }
+      ]
     ]
   }
 }
@@ -38,20 +36,19 @@ expo install react-native-safari-extension
 
 ```console
 
-├── app.json # <-- your app.json
+├── app.json
 ├── MyExtension # <-- the folder name you provided in the plugin config
 │   ├── Resources/
 │   └── Info.plist
 │   └── SafariExtensionHandler.swift
-├── node_modules
+├── node_modules/
 ├── package.json
-├── yarn.lock
 └── ...
 ```
 
 > **Note** The folder name must match the name you provided in the plugin config. All of your scripts and resources must live in a folder with the name `Resources`.
 
-4. If you are using a Expo managed workflow, run a build using EAS. Before it builds, it will run the prebuild step, which triggers the plugin and any other you have specified. If you are using a bare workflow, run `npx expo prebuild -p ios` to run the plugin manually, then run `npx expo run:ios`.
+4. If you are using an Expo managed workflow, run a build using EAS. Before it builds, it will run the prebuild step, which triggers the plugin and any other you have specified. If you are using a bare workflow, run `npx expo prebuild -p ios` to run the plugin manually, then run `npx expo run:ios`.
 
 5. Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
 

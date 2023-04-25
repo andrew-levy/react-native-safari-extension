@@ -1,13 +1,16 @@
 import { ConfigPlugin } from "@expo/config-plugins";
-import { withSafariExtensionPlist } from "./withSafariExtensionPlist";
-import { withSafariExtensionXcodeTarget } from "./withSafariExtensionXcodeTarget";
+import { withInfoPlist } from "./withInfoPlist";
+import { withPodfile } from "./withPodfile";
+import { withXcodeTarget } from "./withXcodeTarget";
 
-const withSafariExtension: ConfigPlugin<{ folderName: string }> = (
-  config,
-  { folderName }
-) => {
-  config = withSafariExtensionPlist(config, { folderName });
-  config = withSafariExtensionXcodeTarget(config, { folderName });
+const withSafariExtension: ConfigPlugin<{
+  folderName: string;
+  teamID: string;
+}> = (config, { folderName, teamID }) => {
+  config = withInfoPlist(config, { folderName });
+  config = withPodfile(config, { teamID });
+  config = withXcodeTarget(config, { folderName });
+
   return config;
 };
 

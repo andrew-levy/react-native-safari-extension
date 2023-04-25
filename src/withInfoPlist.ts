@@ -8,7 +8,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { copyFolderRecursive } from "./utils";
 
-export const withSafariExtensionPlist: ConfigPlugin<{ folderName: string }> = (
+export const withInfoPlist: ConfigPlugin<{ folderName: string }> = (
   config,
   { folderName }
 ) => {

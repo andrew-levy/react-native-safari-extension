@@ -1,7 +1,7 @@
 import { ConfigPlugin, withXcodeProject } from "@expo/config-plugins";
 import { addSafariExtensionXcodeTarget } from "./xcodeSafariExtension/xcodeSafariExtension";
 
-export const withSafariExtensionXcodeTarget: ConfigPlugin<{
+export const withXcodeTarget: ConfigPlugin<{
   folderName: string;
 }> = (config, { folderName }) => {
   return withXcodeProject(config, (config) => {
