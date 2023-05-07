@@ -1,14 +1,17 @@
 import { ConfigPlugin } from "@expo/config-plugins";
+import { withExtensionConfig } from "./withExtensionConfig";
 import { withInfoPlist } from "./withInfoPlist";
-import { withPodfile } from "./withPodfile";
 import { withXcodeTarget } from "./withXcodeTarget";
+import { withRemoveApsEntitlement } from "./withRemoveApsEntitlement";
+// import { withPodfile } from "./withPodfile";
 
 const withSafariExtension: ConfigPlugin<{
   folderName: string;
-  teamID: string;
-}> = (config, { folderName, teamID }) => {
+}> = (config, { folderName }) => {
+  config = withRemoveApsEntitlement(config);
+  // config = withPodfile(config, { folderName });
+  config = withExtensionConfig(config, { folderName });
   config = withInfoPlist(config, { folderName });
-  config = withPodfile(config, { teamID });
   config = withXcodeTarget(config, { folderName });
 
   return config;
