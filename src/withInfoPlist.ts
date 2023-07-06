@@ -24,7 +24,7 @@ export const withInfoPlist: ConfigPlugin<{ folderName: string }> = (
       const extensionPlist: InfoPlist = {
         NSExtension: {
           NSExtensionPointIdentifier: "com.apple.Safari.web-extension",
-          NSExtensionPrincipalClass: "SafariWebExtensionHandler",
+          NSExtensionPrincipalClass: "$(PRODUCT_MODULE_NAME).SafariWebExtensionHandler",
         },
       };
 
