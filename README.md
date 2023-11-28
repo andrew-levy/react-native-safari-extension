@@ -10,15 +10,28 @@ An [Expo Config Plugin](https://docs.expo.dev/guides/config-plugins/) that allow
 
 > **Note** Not sure what Safari Extensions are? Check out [Apple's Safari Extension documentation](https://developer.apple.com/safari/extensions/) to learn more.
 
+There are two workflows for using this plugin:
+
+1. **[Experimental]** Render React Native web inside of your extension. This uses Expo web and Metro to output your React Native compononents inside of the extension popup. You can use Fast Refresh to see your changes in real time.
+2. **[Basic]** Build your own extension using HTML, CSS, and vanilla JavaScript. Fast Refresh is not supported in this workflow.
+
 ## Getting Started
 
-1. Install the plugin
+### Install the plugin
 
 ```console
 npx expo install react-native-safari-extension
 ```
 
-2. Configure the plugin in your `app.json`. Specify a `folderName` for where your extension files will live.
+If you plan on using the Experimental workflow, also install the following dependencies:
+
+```console
+npx expo install react-native-web@~0.19.6 react-dom@18.2.0
+```
+
+### Configure the plugin
+
+Configure the plugin in your `app.json`. Specify a `folderName` for where your extension files will live. If you are using the Experimental workflow, also specify a `web.bundler` to use metro as your bundler.
 
 ```json
 {
@@ -26,35 +39,58 @@ npx expo install react-native-safari-extension
     "name": "myApp",
     "plugins": [
       ["react-native-safari-extension", { "folderName": "MyExtension" }]
-    ]
+    ],
+    "web": {
+      "bundler": "metro" // <-- only needed for Experimental workflow
+    }
   }
 }
 ```
 
-3. Add your extension files to a folder with the name provided above (this folder should be in the root of your project). You can use one of the examples in the `_extensions` directory as a reference.
+### Add your extension files
+
+Add your extension files to a folder with the name provided above (this folder should be in the root of your project). You can download this [sample extension]() to get started. Your project structure should look like this:
 
 ```console
-
+MyApp/
+├── app/
 ├── app.json
-├── MyExtension # <-- the folder name you provided in the plugin config
-│   ├── Resources/
+├── MyExtension # <-- the folder name you provided in the config
+│   ├── public/ # <-- where your extension resource files live.
 │   └── Info.plist
+|   └── manifest.json
 │   └── SafariExtensionHandler.swift
 ├── node_modules/
 ├── package.json
 └── ...
 ```
 
-> **Note** The folder name must match the name you provided in the plugin config. All of your scripts and resources must live in a folder with the name `Resources`.
+> **Note** The folder name must match the name you provided in the plugin config. All of your scripts and resources must live in a folder with the name `public`.
 
-4. If you are using an Expo managed workflow, run a build using EAS. Before it builds, it will run the prebuild step, which triggers the plugin and any others you have specified. If you are using a bare workflow, run `npx expo prebuild -p ios` to run the plugin manually, then run `npx expo run:ios`.
+### Prebuild + Build your app
 
-5. Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
+If you are using EAS to build your app, run a build using eas-cli.
+
+```console
+eas build --platform ios
+```
+
+Or if you're building locally:
+
+```console
+npx expo prebuild -p ios --clean
+npx expo run:ios
+```
+
+### Developing your app
+
+Once the app has successfully run, o pen the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
 
 > **Note** You can also manage your extensions from the Settings app: _Settings > Safari > Extensions_
 
-## Acknowledgements
+### Production
 
-This was heavily inspired by [Benedikt](https://twitter.com/bndkt)'s [App Clip Conflig Plugin](https://github.com/bndkt/react-native-app-clip).
+Before publishing your app, there are a few things you need to do:
 
-Thanks to [Evan Bacon](https://twitter.com/Baconbrix) for his helpful guidance and suggestions.
+1. Create a static web build for your app: `npx expo export --platform web`
+2. In your extensions `popup.html` file, change the `src` attribute of the `script` tag to point to the `index.html` file in your web build.

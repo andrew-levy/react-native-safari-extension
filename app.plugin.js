@@ -1,1 +1,1 @@
-module.exports = require("./build/withSafariExtension.js");
+module.exports = require("./plugin/build/withSafariExtension.js");
