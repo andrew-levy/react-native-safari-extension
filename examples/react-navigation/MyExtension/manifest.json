@@ -41,7 +41,7 @@
       "run_at": "document_start"
     }
   ],
-  "content_security_policy": "script-src 'nonce-e60ed1dc-fe33-11ec-b939-0242ac120002' 'unsafe-eval';",
+  "content_security_policy": "script-src 'nonce-e60ed1dc-fe33-11ec-b939-0242ac120002'",
   "browser_action": {
     "default_popup": "public/popup.html",
     "default_icon": {

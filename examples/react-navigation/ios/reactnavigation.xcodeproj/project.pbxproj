@@ -10,35 +10,35 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		332BE548EB224687A55C02E1 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDA44B88B548788B535FBB /* SafariWebExtensionHandler.swift */; };
+		3AC486084358434486146CBB /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0B5FADD9B4DC1B248EB42 /* noop-file.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		76698214D0E64E8D9F49A216 /* MyExtension.appex in Embed Safari Extensions */ = {isa = PBXBuildFile; fileRef = 9C0AC96F0FFB4D6B8E249A3B /* MyExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96905EF65AED1B983A6B3ABC /* libPods-reactnavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-reactnavigation.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
-		B9FF04389C6C498E992E80AB /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = AA866B7A7331442C90B7A8C1 /* manifest.json */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		D4DFF92E2289412BAB39EAEB /* public in Resources */ = {isa = PBXBuildFile; fileRef = 9663AAE3A3AB4AB1B4DB174C /* public */; };
-		F957A66F5E60452D8896CB43 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FBB0EB06554E2DB97C6632 /* noop-file.swift */; };
-		FE53AF7BCAAA47AB8B3CE898 /* MyExtension.appex in Embed Safari Extensions */ = {isa = PBXBuildFile; fileRef = 1B40B97BDA3D4F5AA8B951DF /* MyExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BE6022612BCE488893D4BFF1 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 35319A3DB5E94F229C130369 /* manifest.json */; };
+		CE58411C77E4432FBFF3D646 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51DB03AE1D7423A9C92B4DE /* SafariWebExtensionHandler.swift */; };
+		E16DCF7F0C3843028D58EBC7 /* public in Resources */ = {isa = PBXBuildFile; fileRef = E5C4E9E6DC014FFC9ACD1690 /* public */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8EC2669051E74A1BA9668A3C /* PBXContainerItemProxy */ = {
+		4ACC099E747E49D39F433C62 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 57D70C88DC8B42508820D770;
+			remoteGlobalIDString = 049F3B395C6F46EF872B9D85;
 			remoteInfo = MyExtension;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6471A8DC41A540C0886A88EF /* Embed Safari Extensions */ = {
+		B0A5762CE7EF463691AA3056 /* Embed Safari Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				FE53AF7BCAAA47AB8B3CE898 /* MyExtension.appex in Embed Safari Extensions */,
+				76698214D0E64E8D9F49A216 /* MyExtension.appex in Embed Safari Extensions */,
 			);
 			name = "Embed Safari Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,24 +46,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04FBB0EB06554E2DB97C6632 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "reactnavigation/noop-file.swift"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* reactnavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reactnavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = reactnavigation/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = reactnavigation/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = reactnavigation/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = reactnavigation/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = reactnavigation/main.m; sourceTree = "<group>"; };
-		1B40B97BDA3D4F5AA8B951DF /* MyExtension.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.application; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = undefined; name = MyExtension.appex; path = MyExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DDDA44B88B548788B535FBB /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = SafariWebExtensionHandler.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
-		2E38238A1F8B46C5AE476A55 /* reactnavigation-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "reactnavigation-Bridging-Header.h"; path = "reactnavigation/reactnavigation-Bridging-Header.h"; sourceTree = "<group>"; };
+		35319A3DB5E94F229C130369 /* manifest.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = manifest.json; path = manifest.json; sourceTree = "<group>"; };
+		454A6472F76D4C77873C7CAB /* reactnavigation-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "reactnavigation-Bridging-Header.h"; path = "reactnavigation/reactnavigation-Bridging-Header.h"; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-reactnavigation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnavigation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2E3173556A471DD304B334 /* Pods-reactnavigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnavigation.debug.xcconfig"; path = "Target Support Files/Pods-reactnavigation/Pods-reactnavigation.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-reactnavigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnavigation.release.xcconfig"; path = "Target Support Files/Pods-reactnavigation/Pods-reactnavigation.release.xcconfig"; sourceTree = "<group>"; };
-		9663AAE3A3AB4AB1B4DB174C /* public */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = public; path = public; sourceTree = "<group>"; };
+		9C0AC96F0FFB4D6B8E249A3B /* MyExtension.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.application; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = undefined; name = MyExtension.appex; path = MyExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = reactnavigation/SplashScreen.storyboard; sourceTree = "<group>"; };
-		AA866B7A7331442C90B7A8C1 /* manifest.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = manifest.json; path = manifest.json; sourceTree = "<group>"; };
-		B800840F2159420DA44AE816 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		CB5C794933024A19B8CFE31A /* Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = "<group>"; };
+		D51DB03AE1D7423A9C92B4DE /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = SafariWebExtensionHandler.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		E1B0B5FADD9B4DC1B248EB42 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "reactnavigation/noop-file.swift"; sourceTree = "<group>"; };
+		E5C4E9E6DC014FFC9ACD1690 /* public */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = public; path = public; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-reactnavigation/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,7 +77,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3ED8750DD2E40208CF45588 /* Frameworks */ = {
+		9E88EF75392B4A3781A9C867 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -97,8 +97,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				04FBB0EB06554E2DB97C6632 /* noop-file.swift */,
-				2E38238A1F8B46C5AE476A55 /* reactnavigation-Bridging-Header.h */,
+				E1B0B5FADD9B4DC1B248EB42 /* noop-file.swift */,
+				454A6472F76D4C77873C7CAB /* reactnavigation-Bridging-Header.h */,
 			);
 			name = reactnavigation;
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				DB92DBEBF20046928C237012 /* MyExtension */,
+				A8BFBBB0784D403B9C81B070 /* MyExtension */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -149,6 +149,18 @@
 				FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */,
 			);
 			name = reactnavigation;
+			sourceTree = "<group>";
+		};
+		A8BFBBB0784D403B9C81B070 /* MyExtension */ = {
+			isa = PBXGroup;
+			children = (
+				E5C4E9E6DC014FFC9ACD1690 /* public */,
+				35319A3DB5E94F229C130369 /* manifest.json */,
+				CB5C794933024A19B8CFE31A /* Info.plist */,
+				D51DB03AE1D7423A9C92B4DE /* SafariWebExtensionHandler.swift */,
+			);
+			name = MyExtension;
+			path = ../MyExtension;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -177,53 +189,16 @@
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
-		DB92DBEBF20046928C237012 /* MyExtension */ = {
-			isa = PBXGroup;
-			children = (
-				9663AAE3A3AB4AB1B4DB174C /* public */,
-				AA866B7A7331442C90B7A8C1 /* manifest.json */,
-				B800840F2159420DA44AE816 /* Info.plist */,
-				1DDDA44B88B548788B535FBB /* SafariWebExtensionHandler.swift */,
-			);
-			name = MyExtension;
-			path = ../MyExtension;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* reactnavigation */ = {
+		049F3B395C6F46EF872B9D85 /* MyExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "reactnavigation" */;
+			buildConfigurationList = B5FE7D5D8313493384F5F473 /* Build configuration list for PBXNativeTarget "MyExtension" */;
 			buildPhases = (
-				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				FD10A7F022414F080027D42C /* Start Packager */,
-				04ACE8DCFBD22E9EBA938FD2 /* [Expo] Configure project */,
-				13B07F871A680F5B00A75B9A /* Sources */,
-				13B07F8C1A680F5B00A75B9A /* Frameworks */,
-				13B07F8E1A680F5B00A75B9A /* Resources */,
-				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				6471A8DC41A540C0886A88EF /* Embed Safari Extensions */,
-				FF06E61124D655AA2471997C /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9479DD693DE44BED9A87A479 /* PBXTargetDependency */,
-			);
-			name = reactnavigation;
-			productName = reactnavigation;
-			productReference = 13B07F961A680F5B00A75B9A /* reactnavigation.app */;
-			productType = "com.apple.product-type.application";
-		};
-		57D70C88DC8B42508820D770 /* MyExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 088364077E084B62A75C382C /* Build configuration list for PBXNativeTarget "MyExtension" */;
-			buildPhases = (
-				573F0E0CE42B48BDAAAD8425 /* Sources */,
-				E3ED8750DD2E40208CF45588 /* Frameworks */,
-				4C1DD4863FF14FCEB1004527 /* Resources */,
+				6A5FF39E95A745A29707A67C /* Sources */,
+				9E88EF75392B4A3781A9C867 /* Frameworks */,
+				7574A3F022FE46B6A74887B8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -231,8 +206,33 @@
 			);
 			name = MyExtension;
 			productName = MyExtension;
-			productReference = 1B40B97BDA3D4F5AA8B951DF /* MyExtension.appex */;
+			productReference = 9C0AC96F0FFB4D6B8E249A3B /* MyExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		13B07F861A680F5B00A75B9A /* reactnavigation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "reactnavigation" */;
+			buildPhases = (
+				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				5CEAAFE003D82E618A47C0BA /* [Expo] Configure project */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
+				B0A5762CE7EF463691AA3056 /* Embed Safari Extensions */,
+				79BFBCF636406616390ED457 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD8FE9DE54C24A48BC2B54C3 /* PBXTargetDependency */,
+			);
+			name = reactnavigation;
+			productName = reactnavigation;
+			productReference = 13B07F961A680F5B00A75B9A /* reactnavigation.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -242,11 +242,11 @@
 			attributes = {
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
+					049F3B395C6F46EF872B9D85 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1250;
-					};
-					57D70C88DC8B42508820D770 = {
-						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
@@ -264,7 +264,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* reactnavigation */,
-				57D70C88DC8B42508820D770 /* MyExtension */,
+				049F3B395C6F46EF872B9D85 /* MyExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -280,12 +280,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C1DD4863FF14FCEB1004527 /* Resources */ = {
+		7574A3F022FE46B6A74887B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4DFF92E2289412BAB39EAEB /* public in Resources */,
-				B9FF04389C6C498E992E80AB /* manifest.json in Resources */,
+				E16DCF7F0C3843028D58EBC7 /* public in Resources */,
+				BE6022612BCE488893D4BFF1 /* manifest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,25 +305,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\nif [[ -z \"$ENTRY_FILE\" ]]; then\n  # Set the entry JS file using the bundler's entry resolution.\n  export ENTRY_FILE=\"$(\"$NODE_BINARY\" -e \"require('expo/scripts/resolveAppEntry')\" \"$PROJECT_ROOT\" ios relative | tail -n 1)\"\nfi\n\nif [[ -z \"$CLI_PATH\" ]]; then\n  # Use Expo CLI\n  export CLI_PATH=\"$(\"$NODE_BINARY\" --print \"require.resolve('@expo/cli')\")\"\nfi\nif [[ -z \"$BUNDLE_COMMAND\" ]]; then\n  # Default Expo CLI command for bundling\n  export BUNDLE_COMMAND=\"export:embed\"\nfi\n\n`\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
-		};
-		04ACE8DCFBD22E9EBA938FD2 /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-reactnavigation/expo-configure-project.sh\"\n";
 		};
 		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -345,6 +326,43 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CEAAFE003D82E618A47C0BA /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-reactnavigation/expo-configure-project.sh\"\n";
+		};
+		79BFBCF636406616390ED457 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-reactnavigation/Pods-reactnavigation-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-reactnavigation/Pods-reactnavigation-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
@@ -386,24 +404,6 @@
 			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\nexport RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > `$NODE_BINARY --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/.packager.env'\"`\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open `$NODE_BINARY --print \"require('path').dirname(require.resolve('expo/package.json')) + '/scripts/launchPackager.command'\"` || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FF06E61124D655AA2471997C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-reactnavigation/Pods-reactnavigation-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-reactnavigation/Pods-reactnavigation-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -414,48 +414,29 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				F957A66F5E60452D8896CB43 /* noop-file.swift in Sources */,
+				3AC486084358434486146CBB /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		573F0E0CE42B48BDAAAD8425 /* Sources */ = {
+		6A5FF39E95A745A29707A67C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				332BE548EB224687A55C02E1 /* SafariWebExtensionHandler.swift in Sources */,
+				CE58411C77E4432FBFF3D646 /* SafariWebExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9479DD693DE44BED9A87A479 /* PBXTargetDependency */ = {
+		AD8FE9DE54C24A48BC2B54C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 57D70C88DC8B42508820D770 /* MyExtension */;
-			targetProxy = 8EC2669051E74A1BA9668A3C /* PBXContainerItemProxy */;
+			target = 049F3B395C6F46EF872B9D85 /* MyExtension */;
+			targetProxy = 4ACC099E747E49D39F433C62 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		083143437E6141A7B0E63CC8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = reactnavigation/reactnavigation.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = ../MyExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.react-navigation.MyExtension";
-				PRODUCT_NAME = MyExtension;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
-		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C2E3173556A471DD304B334 /* Pods-reactnavigation.debug.xcconfig */;
@@ -480,7 +461,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.react-navigation";
-				PRODUCT_NAME = reactnavigation;
+				PRODUCT_NAME = "reactnavigation";
 				SWIFT_OBJC_BRIDGING_HEADER = "reactnavigation/reactnavigation-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -508,13 +489,32 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.react-navigation";
-				PRODUCT_NAME = reactnavigation;
+				PRODUCT_NAME = "reactnavigation";
 				SWIFT_OBJC_BRIDGING_HEADER = "reactnavigation/reactnavigation-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
+		};
+		6A683E1025704A0BBD9EEBBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = reactnavigation/reactnavigation.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = ../MyExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.react-navigation.MyExtension";
+				PRODUCT_NAME = MyExtension;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -644,7 +644,7 @@
 			};
 			name = Release;
 		};
-		94517A3EF0414FA08C67D891 /* Release */ = {
+		9DC255BC435345959B30DB43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -666,15 +666,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		088364077E084B62A75C382C /* Build configuration list for PBXNativeTarget "MyExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				083143437E6141A7B0E63CC8 /* Debug */,
-				94517A3EF0414FA08C67D891 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "reactnavigation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -689,6 +680,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5FE7D5D8313493384F5F473 /* Build configuration list for PBXNativeTarget "MyExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A683E1025704A0BBD9EEBBD /* Debug */,
+				9DC255BC435345959B30DB43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -49,7 +49,7 @@ Configure the plugin in your `app.json`. Specify a `folderName` for where your e
 
 ### Add your extension files
 
-Add your extension files to a folder with the name provided above (this folder should be in the root of your project). You can download this [sample extension]() to get started. Your project structure should look like this:
+Add your extension files to a folder with the name provided above (this folder should be in the root of your project). You can download this [sample extension](./MyExtension.zip) to get started. Your project structure should look like this:
 
 ```console
 MyApp/
@@ -93,4 +93,19 @@ Once the app has successfully run, o pen the Safari app, navigate to any webpage
 Before publishing your app, there are a few things you need to do:
 
 1. Create a static web build for your app: `npx expo export --platform web`
-2. In your extensions `popup.html` file, change the `src` attribute of the `script` tag to point to the `index.html` file in your web build.
+2. Copy the generated `dist` folder and past it into your extension's `public` folder.
+3. In your extension's `popup.html` file, uncomment the production script tag. Update the `src` to point to your `index.html` file in the `dist` folder from step 2.
+4. Build your app and it should just work!
+
+## To Do
+
+- [ ] Pass localhost port to hmrclient (currently hard coded to 8081)
+- [ ] Add link to download sample extension (can this be done in markdown? backup plan is to just clone the repo and copy the folder)
+- [ ] Load assets
+- [ ] Expo router example
+- [ ] Basic example
+- [ ] Document `isSafariExtension`
+- [ ] Document `popup.html` and all files that need to be included in the extension
+- [x] Document production workflow. What manual changes need to be done when using the production output compared to the development server? Is there a way to test this locally?
+- [ ] Rename `public` to `extension-resources` or something similar
+- [ ] Document debugging tips. Use safari...

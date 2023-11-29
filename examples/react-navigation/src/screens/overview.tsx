@@ -1,8 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { isSafariExtension } from 'react-native-safari-extension';
 import 'react-native-safari-extension/build/hmr';
 import { RootStackParamList } from '../navigation';
@@ -16,13 +15,14 @@ export default function Overview() {
     <View style={styles.container}>
       <View style={styles.main}>
         <View>
-          <Text style={styles.title}>Hello World!</Text>
-          <Text style={styles.subtitle}>{isSafariExtension() ? 'Extension' : 'App'}</Text>
+          <Text style={styles.title}>Hello World from the...</Text>
+          <Text style={styles.subtitle}>{isSafariExtension() ? 'Extension!!' : 'App'}</Text>
         </View>
+        <Image source={require('../../assets/favicon.png')} width={100} height={100} />
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Details', { name: 'Dan' })}>
-          <Text style={styles.buttonText}>Show Details</Text>
+          <Text style={styles.buttonText}>Woooo hot reload!!!</Text>
         </TouchableOpacity>
       </View>
     </View>
