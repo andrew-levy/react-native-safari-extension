@@ -8,7 +8,9 @@
     "build",
     "plugin/build",
     "packages/expo-metro-runtime/build",
-    "app.plugin.js"
+    "app.plugin.js",
+    "README.md",
+    "docs"
   ],
   "scripts": {
     "build": "expo-module build",

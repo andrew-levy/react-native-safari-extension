@@ -146,8 +146,9 @@ const HMRClient: HMRClientNativeInterface = {
     assert(!hmrClient, "Cannot initialize hmrClient twice");
 
     const serverScheme = window.location.protocol === "https:" ? "wss" : "ws";
+    const port = process.env.EXPO_PUBLIC_SAFARI_EXTENSION_PORT || "8081"
     const client = new MetroHMRClient(
-      `${serverScheme}://localhost:8081/hot`
+      `${serverScheme}://localhost:${port}/hot`
     );
     hmrClient = client;
 
