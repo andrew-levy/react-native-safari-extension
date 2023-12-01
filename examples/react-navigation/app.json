@@ -15,7 +15,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.react-navigation"
@@ -33,6 +35,23 @@
           "folderName": "MyExtension"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "MyExtension",
+                  "bundleIdentifier": "com.anonymous.react-navigation.MyExtension"
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "463be329-e974-4d89-bf4e-34323c215297"
+      }
+    }
   }
 }

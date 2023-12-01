@@ -22,7 +22,8 @@
     "react-native-safari-extension": "file:../../react-native-safari-extension-1.0.0.tgz",
     "react-native-safe-area-context": "^4.6.3",
     "react-native-screens": "~3.22.0",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "expo-dev-client": "~2.4.12"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
