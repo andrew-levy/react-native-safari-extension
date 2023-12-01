@@ -16,17 +16,17 @@ Safari Extensions usually live inside of your project's native `ios/` folder, ma
 
 There are two workflows for using this plugin:
 
-### Experimental Workflow
+### 🚀 Experimental Workflow
 
 Render React Native web inside of your extension. This uses Expo web and Metro to output your React Native compononents inside of the extension popup. You can use Fast Refresh to see your changes in real time.
 
-### Basic Workflow
+### 💯 Basic Workflow
 
 Build your own extension using HTML, CSS, and vanilla JavaScript.
 
 ### Which workflow should I use?
 
-If you are building a simple extension, the Basic Workflow is probably the best option. If you are building a more complex extension, the Experimental Workflow will allow you to use React Native to build your extension.
+If you are building a simple extension, the Basic Workflow is probably the best option. If it's more complex, you may want to use the Experimental Workflow (it's also more fun).
 
 | Feature / Workflow             | Experimental Workflow | Basic Workflow |
 | ------------------------------ | --------------------- | -------------- |
@@ -41,16 +41,15 @@ If you are building a simple extension, the Basic Workflow is probably the best 
 
 - [Basic Workflow Setup Guide](./docs/Basic.md)
 
-## Roadmap
+## Roadmap to v1.0
 
-- [x] Pass localhost port to hmrclient (currently hard coded to 8081)
 - [x] Document production workflow. What manual changes need to be done when using the production output compared to the development server? Is there a way to test this locally?
+- [x] Customize dev server port (currently hard coded to 8081)
+- [x] Document `isSafariExtension`
 - [ ] Add link to download sample extension (can this be done in markdown? backup plan is to just clone the repo and copy the folder)
 - [ ] Load assets
 - [ ] Expo router example
 - [ ] Basic example
-- [ ] Document `isSafariExtension`
 - [ ] Document `popup.html` and all files that need to be included in the extension
 - [ ] Rename `public` to `extension-resources` or something similar
 - [ ] Document debugging tips. Use safari...
-- [ ] Document limitations

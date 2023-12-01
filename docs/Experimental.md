@@ -81,26 +81,38 @@ Before publishing your app, there are a few things you'll need to do:
 3. In your extension's `popup.html` file, uncomment the production script tag and comment out the development script tag. Update the `src` to point to your `index.html` file in the `dist` folder from step 2.
 4. Build your app and it should just work!
 
+### API
+
+#### `isSafariExtension`
+
+Returns if the app is running in a Safari Extension. Use this to conditionally render components that should only be rendered in the extension.
+```ts
+function isSafariExtension(): boolean
+```
+
+Example:
+```tsx
+import { isSafariExtension } from 'react-native-safari-extension';
+
+function App() {
+  if (isSafariExtension()) {
+    return <Extension />
+  }
+  return <App />
+}
+```
+
+
 ### Trouble Shooting
 
 #### Development Server Port
 
 The default port for the development server is `8081`. If you are using a different port, you can specify the `EXPO_PUBLIC_SAFARI_EXTENSION_PORT` environment variable to use a different port.
 
-Option 1: `.env`
+Add this to your `.env` file:
 
 ```
 EXPO_PUBLIC_SAFARI_EXTENSION_PORT=8082
-```
-
-Option 2: `package.json`
-
-```json
-{
-  "scripts": {
-    "start": "EXPO_PUBLIC_SAFARI_EXTENSION_PORT=8082 expo start"
-  }
-}
 ```
 
 ### Limitations

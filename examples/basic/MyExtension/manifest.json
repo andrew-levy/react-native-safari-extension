@@ -1,0 +1,56 @@
+{
+  "manifest_version": 2,
+  "default_locale": "en",
+  "name": "My Safari Extension",
+  "description": "Extension Description",
+  "version": "1.0",
+  "icons": {
+    "48": "public/images/icon/icon-48.png",
+    "96": "public/images/icon/icon-96.png",
+    "128": "public/images/icon/icon-128.png",
+    "256": "public/images/icon/icon-256.png",
+    "512": "public/images/icon/icon-512.png"
+  },
+  "host_permissions": ["*://localhost/*", "ws://*"],
+  "externally_connectable": {
+    "matches": ["http://localhost/*"]
+  },
+  "permissions": [
+    "alarms",
+    "clipboardWrite",
+    "menus",
+    "nativeMessaging",
+    "storage",
+    "cookies",
+    "tabs",
+    "webNavigation",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "background": {
+    "scripts": ["public/background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "js": ["public/content.js"],
+      "matches": ["*://*/*"],
+      "match_about_blank": true,
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": "script-src 'nonce-e60ed1dc-fe33-11ec-b939-0242ac120002'",
+  "browser_action": {
+    "default_popup": "public/popup.html",
+    "default_icon": {
+      "16": "public/images/toolbar/icon-16.png",
+      "19": "public/images/toolbar/icon-19.png",
+      "32": "public/images/toolbar/icon-32.png",
+      "38": "public/images/toolbar/icon-38.png",
+      "48": "public/images/toolbar/icon-48.png",
+      "72": "public/images/toolbar/icon-72.png"
+    }
+  }
+}
