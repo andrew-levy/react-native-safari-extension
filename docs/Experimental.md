@@ -1,4 +1,3 @@
-
 # Experimental Workflow Setup Guide
 
 ### Install the plugin
@@ -25,7 +24,7 @@ Configure the plugin in your `app.json`. Specify a `folderName` for where your e
       ["react-native-safari-extension", { "folderName": "MyExtension" }]
     ],
     "web": {
-      "bundler": "metro" 
+      "bundler": "metro"
     }
   }
 }
@@ -33,23 +32,9 @@ Configure the plugin in your `app.json`. Specify a `folderName` for where your e
 
 ### Add your extension files
 
-Add your extension files to a folder with the name provided above (this folder should be in the root of your project). You can download this [sample extension](./MyExtension.zip) to get started. Your project structure should look like this:
+Add your extension files to a folder with the name provided above (this folder should be in the root of your project). You can clone this repo and copy the `MyExtension` folder in each of the examples to get started.
 
-```console
-MyApp/
-├── app/
-├── app.json
-├── MyExtension # <-- the folder name you provided in the config
-│   ├── public/ # <-- where your extension resource files live.
-│   └── Info.plist
-|   └── manifest.json
-│   └── SafariExtensionHandler.swift
-├── node_modules/
-├── package.json
-└── ...
-```
-
-> **Note** The folder name must match the name you provided in the plugin config. All of your scripts and resources must live in a folder with the name `public`.
+For more on these files, see [Extension Files](./ExtensionFiles.md).
 
 ### Prebuild + Build your app
 
@@ -70,7 +55,27 @@ npx expo run:ios
 
 Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
 
-> **Note** You can view your extension's settings in the iOS Settings app: _Settings > Safari > Extensions_
+In the `public/popup.html` file, you'll see two script tags, one for development and one for production. When you're developing your extension, make sure the development script tag is uncommented and the production script tag is commented out. Make sure you're using the correct script tag based on if you're using the Expo Router or not. If you use the extension files from the examples in this repo, you shouldn't need to change anything.
+
+#### Expo Router script tag:
+
+```html
+<script
+  nonce="e60ed1dc-fe33-11ec-b939-0242ac120002"
+  src="http://localhost:8081/index.ts.bundle?platform=web&dev=true&hot=false&lazy=true&resolver.environment=client&transform.environment=client"
+></script>
+```
+
+#### Non-Expo Router script tag:
+
+```html
+<script
+  nonce="e60ed1dc-fe33-11ec-b939-0242ac120002"
+  src="http://localhost:8081/node_modules/expo/AppEntry.bundle?platform=web&dev=true&hot=false&lazy=true"
+></script>
+```
+
+> **Note** Make sure the port matches where your development server is running.
 
 ### Production
 
@@ -81,29 +86,40 @@ Before publishing your app, there are a few things you'll need to do:
 3. In your extension's `popup.html` file, uncomment the production script tag and comment out the development script tag. Update the `src` to point to your `index.html` file in the `dist` folder from step 2.
 4. Build your app and it should just work!
 
+```html
+<script
+  nonce="e60ed1dc-fe33-11ec-b939-0242ac120002"
+  src="./dist/bundles/web-7798f744523ecf58d38a12b9d376308f.js"
+  defer
+></script>
+```
+
 ### API
 
 #### `isSafariExtension`
 
 Returns if the app is running in a Safari Extension. Use this to conditionally render components that should only be rendered in the extension.
+
 ```ts
-function isSafariExtension(): boolean
+function isSafariExtension(): boolean;
 ```
 
 Example:
+
 ```tsx
-import { isSafariExtension } from 'react-native-safari-extension';
+import { isSafariExtension } from "react-native-safari-extension";
 
 function App() {
   if (isSafariExtension()) {
-    return <Extension />
+    return <Extension />;
   }
-  return <App />
+  return <App />;
 }
 ```
 
-
 ### Trouble Shooting
+
+- You can view your extension's settings in the iOS Settings app: _Settings > Safari > Extensions_
 
 #### Development Server Port
 
@@ -118,4 +134,3 @@ EXPO_PUBLIC_SAFARI_EXTENSION_PORT=8082
 ### Limitations
 
 - Can't use assets outside of the `public` folder.
-
