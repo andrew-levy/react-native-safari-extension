@@ -55,7 +55,7 @@ npx expo run:ios
 
 Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
 
-In the `public/popup.html` file, you'll see two script tags, one for development and one for production. When you're developing your extension, make sure the development script tag is uncommented and the production script tag is commented out. Make sure you're using the correct script tag based on if you're using the Expo Router or not. If you use the extension files from the examples in this repo, you shouldn't need to change anything.
+In the `src/popup.html` file, you'll see two script tags, one for development and one for production. When you're developing your extension, make sure the development script tag is uncommented and the production script tag is commented out. Make sure you're using the correct script tag based on if you're using the Expo Router or not. If you use the extension files from the examples in this repo, you shouldn't need to change anything.
 
 #### Expo Router script tag:
 
@@ -82,7 +82,7 @@ In the `public/popup.html` file, you'll see two script tags, one for development
 Before publishing your app, there are a few things you'll need to do:
 
 1. Create a static web build for your app: `npx expo export --platform web`
-2. Copy the generated `dist` folder and paste it into your extension's `public` folder.
+2. Copy the generated `dist` folder and paste it into your extension's `src` folder.
 3. In your extension's `popup.html` file, uncomment the production script tag and comment out the development script tag. Update the `src` to point to your `index.html` file in the `dist` folder from step 2.
 4. Build your app and it should just work!
 
@@ -133,4 +133,4 @@ EXPO_PUBLIC_SAFARI_EXTENSION_PORT=8082
 
 ### Limitations
 
-- Can't use assets outside of the `public` folder.
+- Can't use assets outside of the `src` folder.

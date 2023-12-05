@@ -6,12 +6,7 @@ export default function addPbxGroup(
 ) {
   // Add PBX group
   const { uuid: pbxGroupUuid } = proj.addPbxGroup(
-    [
-      "public",
-      "manifest.json",
-      "Info.plist",
-      "SafariWebExtensionHandler.swift",
-    ],
+    ["src", "manifest.json", "Info.plist", "SafariWebExtensionHandler.swift"],
     extensionName,
     `../${extensionName}`
   );

@@ -7,7 +7,7 @@ MyApp/
 ├── app/
 ├── app.json
 ├── MyExtension/ # <-- the folder name you provided in the config
-│   ├── public/
+│   ├── src/
 │   └── Info.plist
 |   └── manifest.json
 │   └── SafariExtensionHandler.swift
@@ -16,7 +16,7 @@ MyApp/
 └── ...
 ```
 
-### `public/`
+### `src/`
 
 This folder contains all of your extension resource files. You can add, remove or modify any of these files to customize your extension. These files are linked closely to the `manifest.json` file, where many of the resources are referenced. **Its very important that you don't change the name of this folder.**
 
