@@ -6,9 +6,7 @@
 
 ## What is it?
 
-An [Expo Config Plugin](https://docs.expo.dev/guides/config-plugins/) that allows you to add a Safari Extension to your iOS apps.
-
-Safari Extensions usually live inside of your project's native `ios/` folder, making it difficult to manage if you don't have access to it directly (i.e. Expo's managed workflow, or if you are using EAS to build your app). This plugin allows you to manage your extension files outside of the `ios/` folder, by using Expo Prebuild to setup your extension in the generated native project automatically.
+An [Expo Config Plugin](https://docs.expo.dev/guides/config-plugins/) that allows you to add a Safari Extension to your iOS apps. This plugin allows you to manage your extension files outside of the `ios` directory with the help of Expo Prebuild. It will continuously generate your native project with your extension files included.
 
 > **Note** Not sure what Safari Extensions are? Check out [Apple's Safari Extension documentation](https://developer.apple.com/safari/extensions/) to learn more.
 
@@ -50,5 +48,5 @@ If you are building a simple extension, the Basic Workflow is probably the best 
 - [x] Expo router example
 - [x] Add link to download sample extension (can this be done in markdown? backup plan is to just clone the repo and copy the folder)
 - [x] Document `popup.html` and all files that need to be included in the extension
+- [x] Document debugging tips. Use safari...
 - [ ] Load assets
-- [ ] Document debugging tips. Use safari...

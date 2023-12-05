@@ -119,7 +119,10 @@ function App() {
 
 ### Trouble Shooting
 
+#### Debugging
+
 - You can view your extension's settings in the iOS Settings app: _Settings > Safari > Extensions_
+- If you want to debug your extension, you can use Safari's Web Inspector. To enable this, open Safari, go to _Safari > Preferences > Advanced_ and check the box next to _Show Develop menu in menu bar_. Then, in the Safari menu bar, go to _Develop > Your Device Name > popup.html_.
 
 #### Development Server Port
 
