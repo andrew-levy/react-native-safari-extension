@@ -7,7 +7,6 @@
   "files": [
     "build",
     "plugin/build",
-    "packages/expo-metro-runtime/build",
     "app.plugin.js",
     "README.md",
     "docs"
@@ -16,8 +15,7 @@
     "build": "expo-module build",
     "build:plugin": "npx tsc --build ./plugin",
     "build:src": "npx tsc --build --watch ./",
-    "build:metro-runtime": "npx tsc --build ./packages/expo-metro-runtime",
-    "build:all": "npm run build:metro-runtime && npm run build:plugin && npm run build:src",
+    "build:all": "npm run build:plugin && npm run build:src",
     "clean": "expo-module clean",
     "expo-module": "expo-module"
   },
@@ -41,17 +39,17 @@
     "expo-config-plugin"
   ],
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^17.0.42",
     "@types/react": "~18.2.21",
     "@types/react-native": "0.72.2",
+    "copyfiles": "^2.4.1",
     "expo-module-scripts": "^3.1.0",
     "expo-modules-core": "^1.5.11",
     "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-native": "0.72.4",
-    "typescript": "^5.2.2",
-    "@types/fs-extra": "^9.0.13",
-    "@types/node": "^17.0.42",
-    "copyfiles": "^2.4.1"
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "expo": "*",

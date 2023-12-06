@@ -49,4 +49,4 @@ If you are building a simple extension, the Basic Workflow is probably the best 
 - [x] Add link to download sample extension (can this be done in markdown? backup plan is to just clone the repo and copy the folder)
 - [x] Document `popup.html` and all files that need to be included in the extension
 - [x] Document debugging tips. Use safari...
-- [ ] Load assets
+- [x] Load assets
