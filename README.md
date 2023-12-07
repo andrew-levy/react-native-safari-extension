@@ -38,15 +38,3 @@ If you are building a simple extension, the Basic Workflow is probably the best 
 - [Experimental Workflow Setup Guide](./docs/Experimental.md)
 
 - [Basic Workflow Setup Guide](./docs/Basic.md)
-
-## Roadmap to v1.0
-
-- [x] Document production workflow. What manual changes need to be done when using the production output compared to the development server? Is there a way to test this locally?
-- [x] Customize dev server port (currently hard coded to 8081)
-- [x] Document `isSafariExtension`
-- [x] Basic example
-- [x] Expo router example
-- [x] Add link to download sample extension (can this be done in markdown? backup plan is to just clone the repo and copy the folder)
-- [x] Document `popup.html` and all files that need to be included in the extension
-- [x] Document debugging tips. Use safari...
-- [x] Load assets

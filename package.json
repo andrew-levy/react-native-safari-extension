@@ -14,7 +14,7 @@
   "scripts": {
     "build": "expo-module build",
     "build:plugin": "npx tsc --build ./plugin",
-    "build:src": "npx tsc --build --watch ./",
+    "build:src": "npx tsc --build ./",
     "build:all": "npm run build:plugin && npm run build:src",
     "clean": "expo-module clean",
     "expo-module": "expo-module"

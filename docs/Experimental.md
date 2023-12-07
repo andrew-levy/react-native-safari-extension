@@ -1,5 +1,7 @@
 # Experimental Workflow Setup Guide
 
+Follow these steps to get the Experimental Workflow up and running. It's called experimental for a reason, so you may encounter some weird things. It may seem like a lot to setup, but it's well worth it in my opinion.
+
 ## Install the plugin and dependencies
 
 ```console
@@ -64,13 +66,13 @@ npx patch-package @expo/metro-runtime
 npm install
 ```
 
-5. If you're not using Expo Router, import `@expo/metro-runtime` in your `App.tsx` file as early as possible (Expo Router apps should do this for you automatically):
+5. If you're using Expo Router, skip this step. If you're not using Expo Router, import `@expo/metro-runtime` in your `App.tsx` file as early as possible:
 
 ```tsx
 import "@expo/metro-runtime";
 ```
 
-6. Lastly, in the `{ExtensionName}/src/popup.html` file, you'll see two script tags, one for development and one for production. When you're developing your extension, make sure the development script tag is uncommented and the production script tag is commented out.
+6. Lastly, in the `{ExtensionFolder}/src/popup.html` file, you'll see two script tags, one for development and one for production. When you're developing your extension, make sure the development script tag is uncommented and the production script tag is commented out.
 
 ```html
 <!-- Expo Router script tag -->
@@ -150,6 +152,10 @@ function App() {
 ```
 
 ## Trouble Shooting
+
+### Expo Router
+
+- When you load the first screen in your extension, you may see an Unmatched Route error. In this case, redirect to the correct screen within a custom unmatched route screen.
 
 ### Debugging
 

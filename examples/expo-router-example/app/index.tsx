@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native';
-import 'react-native-safari-extension/build/hmr';
+import { Link } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function Page() {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <View>
-          <Text style={styles.title}>Hello World!</Text>
+          <Text style={styles.title}>Hello World!!</Text>
         </View>
+        <Link href={'/details'} asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Press Me</Text>
+          </Pressable>
+        </Link>
       </View>
     </View>
   );

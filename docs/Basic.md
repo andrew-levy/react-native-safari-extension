@@ -1,5 +1,7 @@
 # Basic Workflow Setup Guide
 
+Follow these steps to get the Basic Workflow up and running.
+
 ## Install the plugin
 
 ```console
