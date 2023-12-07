@@ -1,3 +1,6 @@
 node_modules/
 build/
 *.tgz
+.DS_Store
+examples/**/node_modules/
+examples/**/ios/

@@ -1,0 +1,18 @@
+diff --git a/node_modules/@expo/metro-runtime/.DS_Store b/node_modules/@expo/metro-runtime/.DS_Store
+new file mode 100644
+index 0000000..8f70268
+Binary files /dev/null and b/node_modules/@expo/metro-runtime/.DS_Store differ
+diff --git a/node_modules/@expo/metro-runtime/build/HMRClient.js b/node_modules/@expo/metro-runtime/build/HMRClient.js
+index 8ce3c59..33e7675 100644
+--- a/node_modules/@expo/metro-runtime/build/HMRClient.js
++++ b/node_modules/@expo/metro-runtime/build/HMRClient.js
+@@ -131,7 +131,8 @@ const HMRClient = {
+     setup({ isEnabled }) {
+         assert(!hmrClient, "Cannot initialize hmrClient twice");
+         const serverScheme = window.location.protocol === "https:" ? "wss" : "ws";
+-        const client = new MetroHMRClient(`${serverScheme}://${window.location.host}/hot`);
++        const port = process.env.EXPO_PUBLIC_SAFARI_EXTENSION_PORT || "8081"
++        const client = new MetroHMRClient(`${serverScheme}://localhost:${port}/hot`);
+         hmrClient = client;
+         const { fullBundleUrl } = (0, getDevServer_1.default)();
+         pendingEntryPoints.push(
