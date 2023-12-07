@@ -34,14 +34,14 @@ For more on these files, see [Extension Files](./ExtensionFiles.md).
 
 Hot reloading allows you to see your changes immediately without having to rebuild your app. To enable hot reloading, you'll need to patch `@expo/metro-runtime`.
 
-First, install `@expo/metro-runtime` and `patch-package`:
+1. First, install `@expo/metro-runtime` and `patch-package`:
 
 ```console
 npm install @expo/metro-runtime
 npm install patch-package -D
 ```
 
-Then, add this to your `package.json`:
+2. Then, add this to your `package.json`:
 
 ```json
 "scripts": {
@@ -49,7 +49,7 @@ Then, add this to your `package.json`:
 }
 ```
 
-Next, open `node_modules/@expo/metro-runtime/build/HMRClient.js` and make this change:
+3. Next, open `node_modules/@expo/metro-runtime/build/HMRClient.js` and make this change:
 
 ```diff
 - const client = new MetroHMRClient(`${serverScheme}://${window.location.host}/hot`);
@@ -57,27 +57,29 @@ Next, open `node_modules/@expo/metro-runtime/build/HMRClient.js` and make this c
 + const client = new MetroHMRClient(`${serverScheme}://localhost:${port}/hot`);
 ```
 
-Next, patch the package with:
+4. Next, patch the package with:
 
 ```console
 npx patch-package @expo/metro-runtime
 npm install
 ```
 
-Lastly, in the `{ExtensionName}/src/popup.html` file, you'll see two script tags, one for development and one for production. When you're developing your extension, make sure the development script tag is uncommented and the production script tag is commented out. Make sure you're using the correct script tag based on if you're using the Expo Router or not. If you use the extension files from the examples in this repo, you shouldn't need to change anything, but here they are for reference:
+5. If you're not using Expo Router, import `@expo/metro-runtime` in your `App.tsx` file as early as possible (Expo Router apps should do this for you automatically):
 
-### Expo Router script tag:
+```tsx
+import "@expo/metro-runtime";
+```
+
+6. Lastly, in the `{ExtensionName}/src/popup.html` file, you'll see two script tags, one for development and one for production. When you're developing your extension, make sure the development script tag is uncommented and the production script tag is commented out.
 
 ```html
+<!-- Expo Router script tag -->
 <script
   nonce="e60ed1dc-fe33-11ec-b939-0242ac120002"
   src="http://localhost:8081/index.ts.bundle?platform=web&dev=true&hot=false&lazy=true&resolver.environment=client&transform.environment=client"
 ></script>
-```
 
-### Non-Expo Router script tag:
-
-```html
+<!-- Non-Expo Router script tag -->
 <script
   nonce="e60ed1dc-fe33-11ec-b939-0242ac120002"
   src="http://localhost:8081/node_modules/expo/AppEntry.bundle?platform=web&dev=true&hot=false&lazy=true"
@@ -101,7 +103,7 @@ npx expo prebuild -p ios
 npx expo run:ios
 ```
 
-Now you're ready to view your extension! Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below Manage Extensions. Click on your extension to open it.
+Now you're ready to view your extension! Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below `Manage Extensions`. Click on your extension to open it.
 
 ## Setup for production
 
@@ -109,8 +111,8 @@ Before publishing your app, there are a few things you'll need to do:
 
 1. Create a static web build for your app: `npx expo export --platform web`
 2. Copy the generated `dist` folder and paste it into your extension's `src` folder.
-3. In your extension's `popup.html` file, uncomment the production script tag and comment out the development script tag. Update the `src` to point to your `index.html` file in the `dist` folder from step 2.
-4. Build your app and it should just work!
+3. In your extension's `popup.html` file, uncomment the production script tag and comment out the development script tag. Update the `src` to point to your bundle file generated in step 2.
+4. Re-build your app
 
 ```html
 <script
@@ -120,7 +122,7 @@ Before publishing your app, there are a few things you'll need to do:
 ></script>
 ```
 
-## Adding Assets
+## Assets
 
 To load local assets in your extension, you'll need to create an `assets/assets/` folder in the root of your extension files. The reason for the terrible folder structure is because in expo web apps, local assets are found at `http://localhost:8081/assets/assets/image.png`, so we need to mimic that in our extension.
 

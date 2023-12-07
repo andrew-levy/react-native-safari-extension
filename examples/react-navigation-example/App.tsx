@@ -1,5 +1,5 @@
+import '@expo/metro-runtime';
 import 'react-native-gesture-handler';
-import 'react-native-safari-extension/build/hmr';
 
 import RootStack from './src/navigation';
 

@@ -6,7 +6,8 @@
     "format": "eslint '**/*.{js,jsx,ts,tsx}' --fix && prettier '**/*.{js,jsx,ts,tsx,json}' --write",
     "ios": "expo run:ios",
     "start": "expo start --dev-client",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@expo/metro-runtime": "^2.2.16",
@@ -32,6 +33,7 @@
     "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.50.0",
     "eslint-config-universe": "^12.0.0",
+    "patch-package": "^8.0.0",
     "prettier": "^3.0.3",
     "typescript": "^5.1.3"
   },

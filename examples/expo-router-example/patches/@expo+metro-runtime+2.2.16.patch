@@ -1,0 +1,15 @@
+diff --git a/node_modules/@expo/metro-runtime/build/HMRClient.js b/node_modules/@expo/metro-runtime/build/HMRClient.js
+index 8ce3c59..b8332cd 100644
+--- a/node_modules/@expo/metro-runtime/build/HMRClient.js
++++ b/node_modules/@expo/metro-runtime/build/HMRClient.js
+@@ -131,8 +131,8 @@ const HMRClient = {
+     setup({ isEnabled }) {
+         assert(!hmrClient, "Cannot initialize hmrClient twice");
+         const serverScheme = window.location.protocol === "https:" ? "wss" : "ws";
+-        const client = new MetroHMRClient(`${serverScheme}://${window.location.host}/hot`);
+-        hmrClient = client;
++        const port = process.env.EXPO_PUBLIC_SAFARI_EXTENSION_PORT || "8081"
++        const client = new MetroHMRClient(`${serverScheme}://localhost:${port}/hot`);        hmrClient = client;
+         const { fullBundleUrl } = (0, getDevServer_1.default)();
+         pendingEntryPoints.push(
+         // HMRServer understands regular bundle URLs, so prefer that in case

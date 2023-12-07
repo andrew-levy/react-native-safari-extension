@@ -15,7 +15,7 @@ export default function Overview() {
     <View style={styles.container}>
       <View style={styles.main}>
         <View>
-          <Text style={styles.title}>Hello World from the.</Text>
+          <Text style={styles.title}>Hello World from the</Text>
           <Text style={styles.subtitle}>{isSafariExtension() ? 'Extension' : 'App'}</Text>
         </View>
         <Image source={require('../../assets/favicon.png')} width={100} height={100} />
