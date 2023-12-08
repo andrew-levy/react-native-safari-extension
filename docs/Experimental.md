@@ -1,6 +1,6 @@
 # Experimental Workflow Setup Guide
 
-Follow these steps to get the Experimental Workflow up and running. It's called experimental for a reason, so you may encounter some weird things. It may seem like a lot to setup, but it's well worth it in my opinion.
+Follow these steps to get the Experimental Workflow up and running. It's called experimental for a reason, so proceed with caution!
 
 ## Install the plugin and dependencies
 
@@ -32,9 +32,9 @@ Add your extension files to a folder with the name provided above (this folder s
 
 For more on these files, see [Extension Files](./ExtensionFiles.md).
 
-## Setup Hot Reloading
+## Setup Fast Refresh
 
-Hot reloading allows you to see your changes immediately without having to rebuild your app. To enable hot reloading, you'll need to patch `@expo/metro-runtime`.
+Fast Refresh allows you to see your changes immediately without having to rebuild your app. To enable Fast Refresh, you'll need to patch `@expo/metro-runtime`.
 
 1. First, install `@expo/metro-runtime` and `patch-package`:
 
@@ -55,9 +55,12 @@ npm install patch-package -D
 
 ```diff
 - const client = new MetroHMRClient(`${serverScheme}://${window.location.host}/hot`);
++ const host = process.env.EXPO_PUBLIC_SAFARI_EXTENSION_HOSTNAME || "localhost"
 + const port = process.env.EXPO_PUBLIC_SAFARI_EXTENSION_PORT || "8081"
-+ const client = new MetroHMRClient(`${serverScheme}://localhost:${port}/hot`);
++ const client = new MetroHMRClient(`${serverScheme}://${host}:${port}/hot`);
 ```
+
+> **Note:** See [Using a Physical Device](#using-a-physical-device) and [Using a Custom Port](#using-a-custom-port) for more info on how to customize this.
 
 4. Next, patch the package with:
 
@@ -72,23 +75,23 @@ npm install
 import "@expo/metro-runtime";
 ```
 
-6. Lastly, in the `{ExtensionFolder}/src/popup.html` file, you'll see two script tags, one for development and one for production. When you're developing your extension, make sure the development script tag is uncommented and the production script tag is commented out.
+6. Lastly, in the in your extension's `/src/popup.html` file, ensure that the development script tag is pointing to your development server and is uncommented.
 
 ```html
-<!-- Expo Router script tag -->
+<!-- Using Expo Router? Use this: -->
 <script
   nonce="e60ed1dc-fe33-11ec-b939-0242ac120002"
   src="http://localhost:8081/index.ts.bundle?platform=web&dev=true&hot=false&lazy=true&resolver.environment=client&transform.environment=client"
 ></script>
 
-<!-- Non-Expo Router script tag -->
+<!-- Not using Expo Router? Use this: -->
 <script
   nonce="e60ed1dc-fe33-11ec-b939-0242ac120002"
   src="http://localhost:8081/node_modules/expo/AppEntry.bundle?platform=web&dev=true&hot=false&lazy=true"
 ></script>
 ```
 
-> **Note:** Make sure the port matches where your development server is running.
+> **Note:** If you're using a phsyical device, make sure to update the `src` to point to your computer's IP address instead of `localhost`. Make sure to also update the port if you're using a port other than `8081`.
 
 ## Prebuild + build your app
 
@@ -155,14 +158,24 @@ function App() {
 
 ### Expo Router
 
-- When you load the first screen in your extension, you may see an Unmatched Route error. In this case, redirect to the correct screen within a custom unmatched route screen.
+When you load the first screen in your extension, you may see an Unmatched Route error. In this case, redirect to the correct screen within a custom unmatched route screen.
 
 ### Debugging
 
-- You can view your extension's settings in the iOS Settings app: _Settings > Safari > Extensions_
-- If you want to debug your extension, you can use Safari's Web Inspector. To enable this, open Safari, go to _Safari > Preferences > Advanced_ and check the box next to _Show Develop menu in menu bar_. Then, in the Safari menu bar, go to _Develop > Your Device Name > popup.html_.
+You can view your extension's settings in the iOS Settings app: _Settings > Safari > Extensions_. If you want to debug your extension, you can use Safari's Web Inspector. To enable this, open Safari, go to _Safari > Preferences > Advanced_ and check the box next to _Show Develop menu in menu bar_. Then, in the Safari menu bar, go to _Develop > Your Device Name > popup.html_.
 
-### Development Server Port
+### Using a physical device
+
+When developing on a physical device, you'll need to set the `EXPO_PUBLIC_SAFARI_EXTENSION_HOSTNAME` environment variable to your computer's IP address. `EXPO_PUBLIC_SAFARI_EXTENSION_HOSTNAME` defaults to `localhost`, which won't work on a physical device.
+
+```
+EXPO_PUBLIC_SAFARI_EXTENSION_HOSTNAME=10.50.131.40
+EXPO_PUBLIC_SAFARI_EXTENSION_PORT=8081
+```
+
+> **Note:** If you're building with EAS, set these env variables in your `eas.json` as well. See more [here](https://docs.expo.dev/build-reference/variables/).
+
+### Using a Custom Port
 
 The default port for the development server is `8081`. If you are using a different port, you can specify the `EXPO_PUBLIC_SAFARI_EXTENSION_PORT` environment variable to use a different port.
 
@@ -172,6 +185,8 @@ Add this to your `.env` file:
 EXPO_PUBLIC_SAFARI_EXTENSION_PORT=8082
 ```
 
-## Limitations
+> **Note:** If you're building with EAS, set this env variables in your `eas.json` as well. See more [here](https://docs.expo.dev/build-reference/variables/).
 
-- Can't use `@expo/vector-icons`
+### Limitations
+
+Can't use `@expo/vector-icons`

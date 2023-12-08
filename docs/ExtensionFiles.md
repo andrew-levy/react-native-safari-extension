@@ -8,7 +8,7 @@ MyApp/
 ├── app.json
 ├── MyExtension/ # <-- the folder name you provided in the config
 │   ├── src/
-│   ├── assets/
+│   ├── assets/assets/
 │   ├── Info.plist
 |   ├── manifest.json
 │   └── SafariExtensionHandler.swift
@@ -19,20 +19,20 @@ MyApp/
 
 ### `src/`
 
-This folder contains all of your extension resource files. You can add, remove or modify any of these files to customize your extension. These files are linked closely to the `manifest.json` file, where many of the resources are referenced. **Its very important that you don't change the name of this folder.**
+This folder contains all of your extension resource files. You can add, remove or modify any of these files to customize your extension. These files are linked closely to the `manifest.json` file, where many of the resources are referenced. **Its very important that you don't change the name of this folder. This is required.**
 
 ### `assets/`
 
-This folder contains all of your extension assets. If you want to use local assets that your app is using, copy your app's `assets` folder and paste it into here. So the end result should be `assets/assets/...`. Not idea, I know, but it's necessary. **Its very important that you don't change the name of this folder.**
+This folder contains all of your extension assets. If you want to use local assets that your app is using, copy your app's `assets` folder and paste it into here. So the end result should be `assets/assets/...`. Not idea, I know, but it's necessary. **Its very important that you don't change the name of this folder. This is required.**
 
 ### `Info.plist`
 
-This file contains the configuration for your extension. You likely won't need to modify this file, but it is required.
+This file contains the configuration for your extension. You likely won't need to modify this file. **This is required.**
 
 ### `manifest.json`
 
-This file contains further configuration for your extension including the name, description, content scripts, entry point, permissions, etc.
+This file contains further configuration for your extension including the name, description, content scripts, entry point, permissions, etc. **This is required.**
 
 ### `SafariExtensionHandler.swift`
 
-This file contains the native code required to run your extension. You likely won't need to modify this file, but it is required.
+This file contains the native code required to run your extension. You likely won't need to modify this file. **This is required.**

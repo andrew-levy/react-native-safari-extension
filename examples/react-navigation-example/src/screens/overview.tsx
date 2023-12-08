@@ -22,7 +22,7 @@ export default function Overview() {
         <BorderlessButton
           style={styles.button}
           onPress={() => navigation.navigate('Details', { name: 'Dan' })}>
-          <Text style={styles.buttonText}>Woooo hot reload!!!</Text>
+          <Text style={styles.buttonText}>To Details</Text>
         </BorderlessButton>
       </View>
     </View>
