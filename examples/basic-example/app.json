@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "basic",
-    "slug": "basic",
+    "name": "basic-example",
+    "slug": "basic-example",
     "version": "1.0.0",
     "web": {
       "favicon": "./assets/favicon.png"
@@ -14,12 +14,10 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alevy97.basic"
+      "bundleIdentifier": "com.alevy97.basic-example"
     },
     "android": {
       "adaptiveIcon": {

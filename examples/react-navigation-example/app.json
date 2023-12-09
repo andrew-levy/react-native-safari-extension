@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-navigation",
-    "slug": "react-navigation",
+    "name": "react-navigation-example",
+    "slug": "react-navigation-example",
     "version": "1.0.0",
     "web": {
       "bundler": "metro",
@@ -18,7 +18,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.react-navigation"
+      "bundleIdentifier": "com.anonymous.react-navigation-example"
     },
     "android": {
       "adaptiveIcon": {
@@ -33,6 +33,23 @@
           "folderName": "MyExtension"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "MyExtension",
+                  "bundleIdentifier": "com.anonymous.react-navigation-example.MyExtension"
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "463be329-e974-4d89-bf4e-34323c215297"
+      }
+    }
   }
 }

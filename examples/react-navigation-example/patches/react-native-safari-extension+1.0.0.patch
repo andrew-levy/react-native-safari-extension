@@ -1,0 +1,15 @@
+diff --git a/node_modules/react-native-safari-extension/plugin/build/withSafariExtension.js b/node_modules/react-native-safari-extension/plugin/build/withSafariExtension.js
+index 8ec6640..188a794 100644
+--- a/node_modules/react-native-safari-extension/plugin/build/withSafariExtension.js
++++ b/node_modules/react-native-safari-extension/plugin/build/withSafariExtension.js
+@@ -1,8 +1,10 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const withExtensionConfig_1 = require("./withExtensionConfig");
++const withRemoveApsEntitlement_1 = require("./withRemoveApsEntitlement");
+ const withXcodeTarget_1 = require("./withXcodeTarget");
+ const withSafariExtension = (config, { folderName }) => {
++    config = (0, withRemoveApsEntitlement_1.withRemoveApsEntitlement)(config);
+     config = (0, withExtensionConfig_1.withExtensionConfig)(config, { folderName });
+     config = (0, withXcodeTarget_1.withXcodeTarget)(config, { folderName });
+     return config;

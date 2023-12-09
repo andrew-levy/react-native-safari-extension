@@ -5,11 +5,11 @@
   "description": "Extension Description",
   "version": "1.0",
   "icons": {
-    "48": "src/images/icon/icon-48.png",
-    "96": "src/images/icon/icon-96.png",
-    "128": "src/images/icon/icon-128.png",
-    "256": "src/images/icon/icon-256.png",
-    "512": "src/images/icon/icon-512.png"
+    "48": "assets/assets/icon-48.png",
+    "96": "assets/assets/icon-96.png",
+    "128": "assets/assets/icon-128.png",
+    "256": "assets/assets/icon-256.png",
+    "512": "assets/assets/icon-512.png"
   },
   "host_permissions": ["*://localhost/*", "ws://*"],
   "externally_connectable": {
@@ -45,12 +45,12 @@
   "browser_action": {
     "default_popup": "src/popup.html",
     "default_icon": {
-      "16": "src/images/toolbar/icon-16.png",
-      "19": "src/images/toolbar/icon-19.png",
-      "32": "src/images/toolbar/icon-32.png",
-      "38": "src/images/toolbar/icon-38.png",
-      "48": "src/images/toolbar/icon-48.png",
-      "72": "src/images/toolbar/icon-72.png"
+      "16": "assets/assets/toolbar-icon-16.png",
+      "19": "assets/assets/toolbar-icon-19.png",
+      "32": "assets/assets/toolbar-icon-32.png",
+      "38": "assets/assets/toolbar-icon-38.png",
+      "48": "assets/assets/toolbar-icon-48.png",
+      "72": "assets/assets/toolbar-icon-72.png"
     }
   }
 }
