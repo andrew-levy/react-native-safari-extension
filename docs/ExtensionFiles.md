@@ -8,7 +8,7 @@ MyApp/
 ├── app.json
 ├── MyExtension/ # <-- the folder name you provided in the config
 │   ├── src/
-│   ├── assets/assets/
+│   ├── assets/
 │   ├── Info.plist
 |   ├── manifest.json
 │   └── SafariExtensionHandler.swift
@@ -23,7 +23,7 @@ This folder contains all of your extension resource files. You can add, remove o
 
 ### `assets/`
 
-This folder contains all of your extension assets. If you want to use local assets that your app is using, copy your app's `assets` folder and paste it into here. So the end result should be `assets/assets/...`. Not idea, I know, but it's necessary. **Its very important that you don't change the name of this folder. This is required.**
+This folder contains all of your extension assets. If you want to use local assets that your app is using, copy your app's `assets` folder and paste it into here. So the end result should be `assets/assets/...`. Not ideal, I know, but it's necessary. **Its very important that you don't change the name of this folder. This is required.**
 
 ### `Info.plist`
 

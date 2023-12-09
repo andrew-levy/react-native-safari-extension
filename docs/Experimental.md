@@ -30,7 +30,7 @@ Configure the plugin in your `app.json`. Specify a `folderName` for where your e
 
 Add your extension files to a folder with the name provided above (this folder should be in the root of your project). You can clone this repo and copy the `MyExtension` folder in each of the examples to get started.
 
-For more on these files, see [Extension Files](./ExtensionFiles.md).
+> **Important:** Your file structure must match the expected [Extension Files](./ExtensionFiles.md). It's recommended to clone this repo and copy the `MyExtension` folder from the examples to get started.
 
 ## Setup Fast Refresh
 

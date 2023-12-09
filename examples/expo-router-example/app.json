@@ -32,7 +32,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alevy97.expo-router"
+      "bundleIdentifier": "com.alevy97.expo-router-example"
     },
     "android": {
       "adaptiveIcon": {
