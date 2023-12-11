@@ -1,6 +1,6 @@
 {
   "name": "react-native-safari-extension",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Config plugin to add a Safari Extension to your React Native iOS app",
   "main": "build/index.js",
   "types": "build/index.d.ts",
