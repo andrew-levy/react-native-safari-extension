@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "react-navigation-example",
-    "slug": "react-navigation-example",
+    "slug": "react-navigation",
     "version": "1.0.0",
     "web": {
       "bundler": "metro",

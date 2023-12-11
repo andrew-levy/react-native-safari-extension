@@ -21,7 +21,6 @@ export default function (
   const commonBuildSettings: any = {
     ASSETCATALOG_COMPILER_APPICON_NAME: "AppIcon",
     CLANG_ENABLE_MODULES: "YES",
-    CODE_SIGN_ENTITLEMENTS: `${appName}/${appName}.entitlements`,
     CURRENT_PROJECT_VERSION: quoted(currentProjectVersion),
     INFOPLIST_FILE: `../${extensionName}/Info.plist`,
     MARKETING_VERSION: quoted(marketingVersion),

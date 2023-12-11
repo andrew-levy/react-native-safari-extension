@@ -16,6 +16,8 @@ An [Expo Config Plugin](https://docs.expo.dev/guides/config-plugins/) that allow
 
 - [Basic Workflow Setup Guide](./docs/Basic.md)
 
+> **Note:** Not sure which workflow to use? Check out the [Workflows](#workflows) section below.
+
 ## Workflows
 
 There are two workflows for using this plugin:
