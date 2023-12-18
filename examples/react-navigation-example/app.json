@@ -18,7 +18,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.react-navigation-example"
+      "bundleIdentifier": "com.anonymous.react-navigation-example2"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,7 +30,12 @@
       [
         "react-native-safari-extension",
         {
-          "folderName": "MyExtension"
+          "folderName": "MyExtension",
+          "dependencies": [
+            {
+              "name": "Alamofire"
+            }
+          ]
         }
       ]
     ],
@@ -42,13 +47,18 @@
               "appExtensions": [
                 {
                   "targetName": "MyExtension",
-                  "bundleIdentifier": "com.anonymous.react-navigation-example.MyExtension"
+                  "bundleIdentifier": "com.anonymous.react-navigation-example2.MyExtension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.anonymous.react-navigation-example2"
+                    ]
+                  }
                 }
               ]
             }
           }
         },
-        "projectId": "463be329-e974-4d89-bf4e-34323c215297"
+        "projectId": "ee24a0e3-f5ce-4c16-b2dd-49789b5c94ed"
       }
     }
   }

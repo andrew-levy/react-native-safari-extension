@@ -10,19 +10,38 @@ npx expo install react-native-safari-extension react-native-web@~0.19.6 react-do
 
 ## Configure the plugin
 
-Configure the plugin in your `app.json`. Specify a `folderName` for where your extension files will live. Also, make sure you have `expo.web.bundler` set to `"metro"`.
+Configure the plugin in your `app.json`.
+
+- Specify a `folderName` for where your extension files will live. This folder should be in the root of your project.
+- Optionally define any Swift `dependencies` that you need in your extension.
+- Make sure you have `expo.web.bundler` set to `"metro"`.
 
 ```json
 {
   "expo": {
     "name": "myApp",
     "plugins": [
-      ["react-native-safari-extension", { "folderName": "MyExtension" }]
+      [
+        "react-native-safari-extension",
+        {
+          "folderName": "MyExtension",
+          "dependencies": [{ "name": "SomeSwiftPackage", "version": "5.4.3" }]
+        }
+      ]
     ],
     "web": {
       "bundler": "metro"
     }
   }
+}
+```
+
+### Plugin Params
+
+```ts
+{
+  folderName: string;
+  dependencies?: { name: string; version?: string }[];
 }
 ```
 

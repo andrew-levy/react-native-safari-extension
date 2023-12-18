@@ -9,18 +9,17 @@ export default function (
     currentProjectVersion,
     marketingVersion,
     extensionName,
-    appName,
   }: {
     extensionBundleIdentifier: string;
     currentProjectVersion: string;
     marketingVersion: string;
     extensionName: string;
-    appName: string;
   }
 ) {
   const commonBuildSettings: any = {
     ASSETCATALOG_COMPILER_APPICON_NAME: "AppIcon",
     CLANG_ENABLE_MODULES: "YES",
+    CODE_SIGN_ENTITLEMENTS: `../${extensionName}/${extensionName}.entitlements`,
     CURRENT_PROJECT_VERSION: quoted(currentProjectVersion),
     INFOPLIST_FILE: `../${extensionName}/Info.plist`,
     MARKETING_VERSION: quoted(marketingVersion),

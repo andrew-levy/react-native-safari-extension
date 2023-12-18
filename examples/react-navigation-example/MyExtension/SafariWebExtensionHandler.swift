@@ -1,15 +1,9 @@
-//
-//  SafariWebExtensionHandler.swift
-//  NewTestExtension
-//
-//  Created by {author} on 6/22/22.
-//
 
 import SafariServices
 import os.log
+import Alamofire
 
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
-
     func beginRequest(with context: NSExtensionContext) {
         let item = context.inputItems[0] as! NSExtensionItem
         let message = item.userInfo?[SFExtensionMessageKey]
@@ -20,5 +14,5 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
         context.completeRequest(returningItems: [response], completionHandler: nil)
     }
-
 }
+
