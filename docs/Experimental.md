@@ -40,7 +40,9 @@ Configure the plugin in your `app.json`.
 
 ```ts
 {
+  // Required: The name of the folder where your extension files live
   folderName: string;
+  // Optional: Any Swift dependencies that you need in your extension
   dependencies?: { name: string; version?: string }[];
 }
 ```
