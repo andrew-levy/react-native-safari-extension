@@ -10,16 +10,36 @@ npx expo install react-native-safari-extension
 
 ## Configure the plugin
 
-Configure the plugin in your `app.json`. Specify a `folderName` for where your extension files will live.
+Configure the plugin in your `app.json`.
+
+- Specify a `folderName` for where your extension files will live. This folder should be in the root of your project.
+- Optionally define any Swift `dependencies` that you need in your extension.
 
 ```json
 {
   "expo": {
     "name": "myApp",
     "plugins": [
-      ["react-native-safari-extension", { "folderName": "MyExtension" }]
+      [
+        "react-native-safari-extension",
+        {
+          "folderName": "MyExtension",
+          "dependencies": [{ "name": "SomeSwiftPackage", "version": "5.4.3" }]
+        }
+      ]
     ]
   }
+}
+```
+
+### Plugin Params
+
+```ts
+{
+  // Required: The name of the folder where your extension files live
+  folderName: string;
+  // Optional: Any Swift dependencies that you need in your extension
+  dependencies?: { name: string; version?: string }[];
 }
 ```
 
@@ -49,3 +69,7 @@ npx expo run:ios
 Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below `Manage Extensions`. Click on your extension to open it.
 
 Whenever you make a change to your extension files, you will need to rebuild your app.
+
+## Messaging between your app and extension
+
+You can send messages between your app and extension using [this guide](https://developer.apple.com/documentation/safariservices/safari_web_extensions/messaging_between_the_app_and_javascript_in_a_safari_web_extension). This plugin sets up App Groups automatically for you using the `com.apple.security.application-groups` entitlement with a value of `group.{YOUR_APP_BUNDLE_ID}`,

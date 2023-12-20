@@ -10,19 +10,40 @@ npx expo install react-native-safari-extension react-native-web@~0.19.6 react-do
 
 ## Configure the plugin
 
-Configure the plugin in your `app.json`. Specify a `folderName` for where your extension files will live. Also, make sure you have `expo.web.bundler` set to `"metro"`.
+Configure the plugin in your `app.json`.
+
+- Specify a `folderName` for where your extension files will live. This folder should be in the root of your project.
+- Optionally define any Swift `dependencies` that you need in your extension.
+- Make sure you have `expo.web.bundler` set to `"metro"`.
 
 ```json
 {
   "expo": {
     "name": "myApp",
     "plugins": [
-      ["react-native-safari-extension", { "folderName": "MyExtension" }]
+      [
+        "react-native-safari-extension",
+        {
+          "folderName": "MyExtension",
+          "dependencies": [{ "name": "SomeSwiftPackage", "version": "5.4.3" }]
+        }
+      ]
     ],
     "web": {
       "bundler": "metro"
     }
   }
+}
+```
+
+### Plugin Params
+
+```ts
+{
+  // Required: The name of the folder where your extension files live
+  folderName: string;
+  // Optional: Any Swift dependencies that you need in your extension
+  dependencies?: { name: string; version?: string }[];
 }
 ```
 
@@ -153,6 +174,10 @@ function App() {
   return <App />;
 }
 ```
+
+## Messaging between your app and extension
+
+You can send messages between your app and extension using [this guide](https://developer.apple.com/documentation/safariservices/safari_web_extensions/messaging_between_the_app_and_javascript_in_a_safari_web_extension). This plugin sets up App Groups automatically for you using the `com.apple.security.application-groups` entitlement with a value of `group.{YOUR_APP_BUNDLE_ID}`,
 
 ## Trouble Shooting
 

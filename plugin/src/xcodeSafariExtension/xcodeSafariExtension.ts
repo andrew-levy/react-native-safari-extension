@@ -8,7 +8,6 @@ import addToPbxProjectSection from "./addToPbxProjectSection";
 import addXCConfigurationList from "./addXCConfigurationList";
 
 type AddXCodeTargetParmas = {
-  appName: string;
   extensionName: string;
   extensionBundleIdentifier: string;
   currentProjectVersion: string;
@@ -19,12 +18,10 @@ type AddXCodeTargetParmas = {
 export async function addSafariExtensionXcodeTarget(
   proj: XcodeProject,
   {
-    appName,
     extensionName,
     extensionBundleIdentifier,
     currentProjectVersion,
     marketingVersion,
-    iosRoot,
   }: AddXCodeTargetParmas
 ) {
   if (proj.getFirstProject().firstProject.targets?.length > 1) return true;
@@ -36,7 +33,6 @@ export async function addSafariExtensionXcodeTarget(
     currentProjectVersion,
     marketingVersion,
     extensionName,
-    appName,
   });
   const productFile = addProductFile(proj, extensionName, groupName);
   const target = addToPbxNativeTargetSection(proj, {

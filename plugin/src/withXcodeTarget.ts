@@ -6,12 +6,10 @@ export const withXcodeTarget: ConfigPlugin<{
 }> = (config, { folderName }) => {
   return withXcodeProject(config, (config) => {
     addSafariExtensionXcodeTarget(config.modResults, {
-      appName: config.modRequest.projectName!,
       extensionName: folderName,
-      extensionBundleIdentifier: `${config.ios!
-        .bundleIdentifier!}.${folderName}`,
-      currentProjectVersion: config.ios!.buildNumber || "1",
-      marketingVersion: config.version!,
+      extensionBundleIdentifier: `${config.ios?.bundleIdentifier}.${folderName}`,
+      currentProjectVersion: config.ios?.buildNumber || "1",
+      marketingVersion: config.version || "1.0.0",
       iosRoot: config.modRequest.platformProjectRoot,
     });
 
