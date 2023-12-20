@@ -8,8 +8,7 @@
     "build",
     "plugin/build",
     "app.plugin.js",
-    "README.md",
-    "docs"
+    "README.md"
   ],
   "scripts": {
     "build": "expo-module build",

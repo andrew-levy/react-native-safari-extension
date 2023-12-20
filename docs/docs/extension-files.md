@@ -1,4 +1,7 @@
-# Extension Files
+---
+sidebar_position: 4
+title: "Extension Files"
+---
 
 When using this plugin, you get to manage your extension files outside of the `ios` folder. Here's a breakdown of the necessary files:
 

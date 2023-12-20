@@ -1,4 +1,7 @@
-# Experimental Workflow Setup Guide
+---
+sidebar_position: 3
+title: "Experimental Workflow"
+---
 
 Follow these steps to get the Experimental Workflow up and running. It's called experimental for a reason, so proceed with caution!
 
@@ -51,7 +54,9 @@ Configure the plugin in your `app.json`.
 
 Add your extension files to a folder with the name provided above This folder should be in the root of your project.
 
-> **Important:** Your file structure must match the expected [Extension Files](./ExtensionFiles.md). It's recommended to clone this repo and copy the `MyExtension` folder from the examples to get started.
+:::important
+Your file structure must match the expected [Extension Files](./extension-files). It's recommended to clone this repo and copy the `MyExtension` folder from the examples to get started.
+:::
 
 ## Setup Fast Refresh
 
@@ -151,67 +156,3 @@ Before publishing your app, there are a few things you'll need to do:
 ## Assets
 
 To load local assets in your extension, you'll need to create an `assets/assets/` folder in the root of your extension files. The reason for the terrible folder structure is because in expo web apps, local assets are found at `http://localhost:8081/assets/assets/image.png`, so we need to mimic that in our extension.
-
-## API
-
-### `isSafariExtension`
-
-Returns if the app is running in a Safari Extension. Use this to conditionally render components that should only be rendered in the extension.
-
-```ts
-function isSafariExtension(): boolean;
-```
-
-Example:
-
-```tsx
-import { isSafariExtension } from "react-native-safari-extension";
-
-function App() {
-  if (isSafariExtension()) {
-    return <Extension />;
-  }
-  return <App />;
-}
-```
-
-## Messaging between your app and extension
-
-You can send messages between your app and extension using [this guide](https://developer.apple.com/documentation/safariservices/safari_web_extensions/messaging_between_the_app_and_javascript_in_a_safari_web_extension). This plugin sets up App Groups automatically for you using the `com.apple.security.application-groups` entitlement with a value of `group.{YOUR_APP_BUNDLE_ID}`,
-
-## Trouble Shooting
-
-### Expo Router
-
-When you load the first screen in your extension, you may see an Unmatched Route error. In this case, redirect to the correct screen within a custom unmatched route screen.
-
-### Debugging
-
-You can view your extension's settings in the iOS Settings app: _Settings > Safari > Extensions_. If you want to debug your extension, you can use Safari's Web Inspector. To enable this, open Safari, go to _Safari > Preferences > Advanced_ and check the box next to _Show Develop menu in menu bar_. Then, in the Safari menu bar, go to _Develop > Your Device Name > popup.html_.
-
-### Using a physical device
-
-When developing on a physical device, you'll need to set the `EXPO_PUBLIC_SAFARI_EXTENSION_HOSTNAME` environment variable to your computer's IP address. `EXPO_PUBLIC_SAFARI_EXTENSION_HOSTNAME` defaults to `localhost`, which won't work on a physical device.
-
-```
-EXPO_PUBLIC_SAFARI_EXTENSION_HOSTNAME=10.50.131.40
-EXPO_PUBLIC_SAFARI_EXTENSION_PORT=8081
-```
-
-> **Note:** If you're building with EAS, set these env variables in your `eas.json` as well. See more [here](https://docs.expo.dev/build-reference/variables/).
-
-### Using a Custom Port
-
-The default port for the development server is `8081`. If you are using a different port, you can specify the `EXPO_PUBLIC_SAFARI_EXTENSION_PORT` environment variable to use a different port.
-
-Add this to your `.env` file:
-
-```
-EXPO_PUBLIC_SAFARI_EXTENSION_PORT=8082
-```
-
-> **Note:** If you're building with EAS, set this env variables in your `eas.json` as well. See more [here](https://docs.expo.dev/build-reference/variables/).
-
-### Limitations
-
-Can't use `@expo/vector-icons`

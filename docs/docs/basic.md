@@ -1,4 +1,7 @@
-# Basic Workflow Setup Guide
+---
+sidebar_position: 2
+title: "Basic Workflow"
+---
 
 Follow these steps to get the Basic Workflow up and running.
 
@@ -47,7 +50,9 @@ Configure the plugin in your `app.json`.
 
 Add your extension files to a folder with the name provided above. This folder should be in the root of your project.
 
-> **Important:** Your file structure must match the expected [Extension Files](./ExtensionFiles.md). It's recommended to clone this repo and copy the `MyExtension` folder from the examples to get started.
+:::important
+Your file structure must match the expected [Extension Files](./extension-files). It's recommended to clone this repo and copy the `MyExtension` folder from the examples to get started.
+:::
 
 ## Prebuild + build your app
 
@@ -69,7 +74,3 @@ npx expo run:ios
 Once the app has successfully run, open the Safari app, navigate to any webpage, and press the `AA` button in the address bar. This will open a context menu. Select `Manage Extensions` and enable your extension by switching the toggle on. You should now see your extension as an option in the context menu below `Manage Extensions`. Click on your extension to open it.
 
 Whenever you make a change to your extension files, you will need to rebuild your app.
-
-## Messaging between your app and extension
-
-You can send messages between your app and extension using [this guide](https://developer.apple.com/documentation/safariservices/safari_web_extensions/messaging_between_the_app_and_javascript_in_a_safari_web_extension). This plugin sets up App Groups automatically for you using the `com.apple.security.application-groups` entitlement with a value of `group.{YOUR_APP_BUNDLE_ID}`,
